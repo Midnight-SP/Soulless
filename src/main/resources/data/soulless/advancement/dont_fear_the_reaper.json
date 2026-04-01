@@ -1,0 +1,40 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:soul_reaper"
+    },
+    "title": {
+      "translate": "advancement.soulless.dont_fear_the_reaper.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.dont_fear_the_reaper.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_undead_with_soul_reaper": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": "soulless:soul_reaper"
+            }
+          }
+        },
+        "entity": {
+          "type": "#minecraft:undead"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill_undead_with_soul_reaper"
+    ]
+  ]
+}

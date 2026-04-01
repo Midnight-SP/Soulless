@@ -15,6 +15,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,6 +31,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -52,6 +56,13 @@ public class SoullessMod {
 
     // Creates a new Lost Souls item with the id "soulless:lost_souls"
     public static final DeferredItem<Item> LOST_SOULS = ITEMS.registerSimpleItem("lost_souls", new Item.Properties());
+    public static final DeferredItem<Item> GHOSTPOWDER = ITEMS.registerSimpleItem("ghostpowder", new Item.Properties());
+    public static final DeferredItem<Item> SOULSTEEL_INGOT = ITEMS.registerSimpleItem("soulsteel_ingot", new Item.Properties());
+    public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
+        new SwordItem(Tiers.DIAMOND, new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F)))
+    );
+    public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    public static final DeferredItem<BlockItem> SOULSTEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("soulsteel_block", SOULSTEEL_BLOCK);
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -98,6 +109,16 @@ public class SoullessMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(LOST_SOULS);
+            event.accept(GHOSTPOWDER);
+            event.accept(SOULSTEEL_INGOT);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(SOULSTEEL_BLOCK_ITEM);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            event.accept(SOUL_REAPER);
         }
     }
 
@@ -133,7 +154,26 @@ public class SoullessMod {
             return;
         }
 
-        ItemStack lostSoulDrop = new ItemStack(LOST_SOULS.get());
+        Player killer = (Player) event.getSource().getEntity();
+        int dropCount = killer.getMainHandItem().is(SOUL_REAPER.get()) ? 2 : 1;
+        ItemStack lostSoulDrop = new ItemStack(LOST_SOULS.get(), dropCount);
         event.getDrops().add(new ItemEntity(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), lostSoulDrop));
+    }
+
+    @SubscribeEvent
+    public void onLivingDamagePre(LivingDamageEvent.Pre event) {
+        if (!event.getEntity().getType().is(EntityTypeTags.UNDEAD)) {
+            return;
+        }
+
+        if (!(event.getSource().getEntity() instanceof Player attacker)) {
+            return;
+        }
+
+        if (!attacker.getMainHandItem().is(SOUL_REAPER.get())) {
+            return;
+        }
+
+        event.setNewDamage(event.getNewDamage() * 2.0F);
     }
 }

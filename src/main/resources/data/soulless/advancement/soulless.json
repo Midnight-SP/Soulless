@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "id": "soulless:lost_souls"
+    },
+    "title": {
+      "translate": "advancement.soulless.soulless.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.soulless.description"
+    },
+    "background": "minecraft:textures/block/soul_sand.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_lost_souls": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:lost_souls"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lost_souls"
+    ]
+  ]
+}

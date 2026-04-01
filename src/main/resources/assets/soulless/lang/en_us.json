@@ -1,6 +1,15 @@
 {
   "itemGroup.soulless": "Soulless",
   "item.soulless.lost_souls": "Lost Souls",
+  "item.soulless.ghostpowder": "Ghostpowder",
+  "item.soulless.soulsteel_ingot": "Soulsteel Ingot",
+  "item.soulless.soul_reaper": "Soul Reaper",
+  "block.soulless.soulsteel_block": "Soulsteel Block",
+
+  "advancement.soulless.soulless.title": "Soulless",
+  "advancement.soulless.soulless.description": "Find souls lost by the dead",
+  "advancement.soulless.dont_fear_the_reaper.title": "(Don't Fear) The Reaper",
+  "advancement.soulless.dont_fear_the_reaper.description": "Find an easier way to get lost souls",
 
   "soulless.configuration.title": "Soulless Configs",
   "soulless.configuration.section.soulless.common.toml": "Soulless Configs",

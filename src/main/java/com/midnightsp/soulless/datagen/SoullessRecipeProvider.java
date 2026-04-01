@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -62,5 +63,47 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .requires(Items.WATER_BUCKET)
             .unlockedBy("has_lost_souls", has(SoullessMod.LOST_SOULS.get()))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "ghast_tear_from_lost_souls_and_water_bucket"));
+
+        // Ghostpowder: Lost Souls + Sugar + Gunpowder + Redstone -> 1x Ghostpowder
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoullessMod.GHOSTPOWDER.get())
+            .requires(SoullessMod.LOST_SOULS.get())
+            .requires(Items.SUGAR)
+            .requires(Items.GUNPOWDER)
+            .requires(Items.REDSTONE)
+            .unlockedBy("has_lost_souls", has(SoullessMod.LOST_SOULS.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "ghostpowder_from_lost_souls_sugar_gunpowder_redstone"));
+
+        // Soulsteel Ingot: Iron Ingot + 2x Coal + Ghostpowder -> 1x Soulsteel Ingot
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoullessMod.SOULSTEEL_INGOT.get())
+            .requires(Items.IRON_INGOT)
+            .requires(Items.COAL, 2)
+            .requires(SoullessMod.GHOSTPOWDER.get())
+            .unlockedBy("has_ghostpowder", has(SoullessMod.GHOSTPOWDER.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_ingot_from_iron_coal_ghostpowder"));
+
+        // Soulsteel Block: 9x Soulsteel Ingot -> 1x Soulsteel Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, SoullessMod.SOULSTEEL_BLOCK)
+            .pattern("XXX")
+            .pattern("XXX")
+            .pattern("XXX")
+            .define('X', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_block_from_soulsteel_ingots"));
+
+        // Soulsteel Ingots: 1x Soulsteel Block -> 9x Soulsteel Ingot
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoullessMod.SOULSTEEL_INGOT.get(), 9)
+            .requires(SoullessMod.SOULSTEEL_BLOCK)
+            .unlockedBy("has_soulsteel_block", has(SoullessMod.SOULSTEEL_BLOCK))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_ingots_from_soulsteel_block"));
+
+        // Soul Reaper: Hoe-shaped pattern using Soulsteel Ingots
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.SOUL_REAPER.get())
+            .pattern("XX")
+            .pattern(" S")
+            .pattern(" S")
+            .define('X', SoullessMod.SOULSTEEL_INGOT.get())
+            .define('S', Items.STICK)
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soul_reaper"));
     }
 }
