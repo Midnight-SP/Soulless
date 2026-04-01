@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    "XWX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "soulless:lost_souls"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:ghast_tear"
+  }
+}

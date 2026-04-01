@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.midnightsp.soulless;
 
 import java.util.List;
 import java.util.Set;

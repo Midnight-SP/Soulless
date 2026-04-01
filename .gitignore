@@ -34,7 +34,19 @@ bin/
 
 ### Minecraft Modding ###
 run/
+runs/
 !**/src/**/run/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
+
+### Runtime Output ###
+logs/
+*.log
+*.log.gz
+hs_err_pid*
+replay_pid*
+
+### Local Temp Files ###
+*.tmp
+*.temp

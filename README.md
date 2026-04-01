@@ -1,25 +1,61 @@
 
-Installation information
-=======
+# Soulless
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+Soulless is a NeoForge mod for Minecraft 1.21.1.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+## Features
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+- Adds a new item: Lost Souls (`soulless:lost_souls`).
+- Undead mobs drop Lost Souls when killed by a player.
+- Adds six shapeless crafting recipes that use Lost Souls.
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+## Project Info
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+- Mod ID: `soulless`
+- Name: `Soulless`
+- Version: `1.0.0`
+- Minecraft: `1.21.1`
+- NeoForge: `21.1.222`
+- Group: `com.midnightsp.soulless`
+- Author: `MidnightSP`
+
+## Development
+
+Use the Gradle wrapper from the project root.
+
+### Build
+
+```powershell
+./gradlew build
+```
+
+### Run Client (Dev)
+
+```powershell
+./gradlew runClient
+```
+
+### Generate Data (Recipes/Advancements)
+
+```powershell
+./gradlew runData
+```
+
+Generated files are written to:
+
+- `src/generated/resources`
+
+## Notes
+
+- The project uses Mojang official mappings.
+- If your IDE cache gets out of sync, try:
+
+```powershell
+./gradlew --refresh-dependencies
+./gradlew clean
+```
+
+## Resources
+
+- NeoForged Docs: https://docs.neoforged.net/
+- NeoForged Discord: https://discord.neoforged.net/

@@ -1,0 +1,12 @@
+{
+  "itemGroup.soulless": "Soulless",
+  "item.soulless.lost_souls": "Lost Souls",
+
+  "soulless.configuration.title": "Soulless Configs",
+  "soulless.configuration.section.soulless.common.toml": "Soulless Configs",
+  "soulless.configuration.section.soulless.common.toml.title": "Soulless Configs",
+  "soulless.configuration.items": "Item List",
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "soulless.configuration.magicNumberIntroduction": "Magic Number Text",
+  "soulless.configuration.magicNumber": "Magic Number"
+}
