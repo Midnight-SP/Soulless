@@ -1,0 +1,28 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:ghost_orb"
+    },
+    "title": {
+      "translate": "advancement.soulless.the_orb_of_dreamers.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.the_orb_of_dreamers.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_ghost_orb": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "use_ghost_orb"
+    ]
+  ]
+}

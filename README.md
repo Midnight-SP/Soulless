@@ -12,6 +12,7 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 	- Soulsteel Ingot (`soulless:soulsteel_ingot`)
 	- Soulsteel Block (`soulless:soulsteel_block`)
 	- Soul Reaper (`soulless:soul_reaper`)
+	- Ghost Orb (`soulless:ghost_orb`)
 - Adds custom crafting progression:
 	- Lost Souls conversion recipes
 	- Ghostpowder and Soulsteel crafting recipes
@@ -20,15 +21,21 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 - Soul Reaper special effects:
 	- Doubles Lost Souls drops from undead kills
 	- Deals double damage to undead mobs
+- Ghost Orb special effects:
+	- Throwable no-gravity projectile with 15s cooldown
+	- Applies Poison, Blindness, and Glowing in a 5-block radius for 30s
+	- Spawns soul particles on impact
+	- Converts nearby blocks by hardness rules while skipping air, liquids, soul blocks, and indestructible blocks
 - Adds custom advancements:
 	- Soulless
 	- (Don't Fear) The Reaper
+	- The Orb of Dreamers
 
 ## Project Info
 
 - Mod ID: `soulless`
 - Name: `Soulless`
-- Version: `1.0.1`
+- Version: `1.0.2`
 - Minecraft: `1.21.1`
 - NeoForge: `21.1.222`
 - Group: `com.midnightsp.soulless`

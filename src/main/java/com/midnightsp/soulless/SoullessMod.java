@@ -4,10 +4,14 @@ import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 import com.midnightsp.soulless.datagen.SoullessRecipeProvider;
+import com.midnightsp.soulless.entity.SoullessEntities;
+import com.midnightsp.soulless.item.GhostOrbItem;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.tags.EntityTypeTags;
@@ -33,6 +37,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -61,6 +66,9 @@ public class SoullessMod {
     public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
         new SwordItem(Tiers.DIAMOND, new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F)))
     );
+    public static final DeferredItem<Item> GHOST_ORB = ITEMS.register("ghost_orb", () ->
+        new GhostOrbItem(new Item.Properties().stacksTo(16))
+    );
     public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
     public static final DeferredItem<BlockItem> SOULSTEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("soulsteel_block", SOULSTEEL_BLOCK);
 
@@ -76,6 +84,8 @@ public class SoullessMod {
         ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
+        // Register entity types
+        SoullessEntities.ENTITY_TYPES.register(modEventBus);
 
         // Register datagen event listener
         modEventBus.addListener(this::gatherData);
@@ -119,6 +129,7 @@ public class SoullessMod {
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(SOUL_REAPER);
+            event.accept(GHOST_ORB);
         }
     }
 
@@ -175,5 +186,28 @@ public class SoullessMod {
         }
 
         event.setNewDamage(event.getNewDamage() * 2.0F);
+    }
+
+    @SubscribeEvent
+    public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+
+        if (!event.getItemStack().is(GHOST_ORB.get())) {
+            return;
+        }
+
+        var advancementId = ResourceLocation.fromNamespaceAndPath(MODID, "the_orb_of_dreamers");
+        var advancement = serverPlayer.server.getAdvancements().get(advancementId);
+
+        if (advancement == null) {
+            return;
+        }
+
+        var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+        for (String criterion : progress.getRemainingCriteria()) {
+            serverPlayer.getAdvancements().award(advancement, criterion);
+        }
     }
 }

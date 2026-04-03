@@ -105,5 +105,12 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .define('S', Items.STICK)
             .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soul_reaper"));
+
+        // Ghost Orb: Ghostpowder + Fire Charge -> 1x Ghost Orb
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoullessMod.GHOST_ORB.get())
+            .requires(SoullessMod.GHOSTPOWDER.get())
+            .requires(Items.FIRE_CHARGE)
+            .unlockedBy("has_ghostpowder", has(SoullessMod.GHOSTPOWDER.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "ghost_orb_from_ghostpowder_and_fire_charge"));
     }
 }
