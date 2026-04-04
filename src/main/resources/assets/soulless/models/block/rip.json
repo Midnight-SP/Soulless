@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "soulless:block/rip_bottom",
+    "top": "soulless:block/rip_top",
+    "side": "soulless:block/rip_side"
+  }
+}

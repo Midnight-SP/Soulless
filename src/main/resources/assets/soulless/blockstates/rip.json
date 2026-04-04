@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "unstable=false": {
+      "model": "soulless:block/rip"
+    },
+    "unstable=true": {
+      "model": "soulless:block/rip"
+    }
+  }
+}

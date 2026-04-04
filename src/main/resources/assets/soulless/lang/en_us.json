@@ -5,6 +5,7 @@
   "item.soulless.soulsteel_ingot": "Soulsteel Ingot",
   "item.soulless.soul_reaper": "Soul Reaper",
   "item.soulless.ghost_orb": "Ghost Orb",
+  "block.soulless.rip": "RIP",
   "block.soulless.soulsteel_block": "Soulsteel Block",
 
   "advancement.soulless.soulless.title": "Soulless",
@@ -13,6 +14,8 @@
   "advancement.soulless.dont_fear_the_reaper.description": "Find an easier way to get lost souls",
   "advancement.soulless.the_orb_of_dreamers.title": "The Orb of Dreamers",
   "advancement.soulless.the_orb_of_dreamers.description": "This place needs more soul",
+  "advancement.soulless.the_ghostlands.title": "The GhostLands",
+  "advancement.soulless.the_ghostlands.description": "Turn the world into a wasteland",
 
   "soulless.configuration.title": "Soulless Configs",
   "soulless.configuration.section.soulless.common.toml": "Soulless Configs",

@@ -3,6 +3,7 @@ package com.midnightsp.soulless;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.midnightsp.soulless.block.RipBlock;
 import com.midnightsp.soulless.datagen.SoullessRecipeProvider;
 import com.midnightsp.soulless.entity.SoullessEntities;
 import com.midnightsp.soulless.item.GhostOrbItem;
@@ -69,6 +70,8 @@ public class SoullessMod {
     public static final DeferredItem<Item> GHOST_ORB = ITEMS.register("ghost_orb", () ->
         new GhostOrbItem(new Item.Properties().stacksTo(16))
     );
+    public static final DeferredBlock<Block> RIP = BLOCKS.register("rip", () -> new RipBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TNT)));
+    public static final DeferredItem<BlockItem> RIP_ITEM = ITEMS.registerSimpleBlockItem("rip", RIP);
     public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
     public static final DeferredItem<BlockItem> SOULSTEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("soulsteel_block", SOULSTEEL_BLOCK);
 
@@ -125,6 +128,10 @@ public class SoullessMod {
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(SOULSTEEL_BLOCK_ITEM);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+            event.accept(RIP_ITEM);
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {

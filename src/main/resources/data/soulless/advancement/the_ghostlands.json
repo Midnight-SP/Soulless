@@ -1,0 +1,28 @@
+{
+  "parent": "soulless:the_orb_of_dreamers",
+  "display": {
+    "icon": {
+      "id": "soulless:rip"
+    },
+    "title": {
+      "translate": "advancement.soulless.the_ghostlands.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.the_ghostlands.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "detonate_rip": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "detonate_rip"
+    ]
+  ]
+}

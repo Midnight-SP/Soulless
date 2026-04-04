@@ -112,5 +112,16 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .requires(Items.FIRE_CHARGE)
             .unlockedBy("has_ghostpowder", has(SoullessMod.GHOSTPOWDER.get()))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "ghost_orb_from_ghostpowder_and_fire_charge"));
+
+        // RIP: Nether Star with TNT corners and Soulsteel block edges
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, SoullessMod.RIP.get())
+            .pattern("TST")
+            .pattern("SNS")
+            .pattern("TST")
+            .define('T', Blocks.TNT)
+            .define('S', SoullessMod.SOULSTEEL_BLOCK.get())
+            .define('N', Items.NETHER_STAR)
+            .unlockedBy("has_nether_star", has(Items.NETHER_STAR))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "rip"));
     }
 }

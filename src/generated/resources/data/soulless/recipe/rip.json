@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "S": {
+      "item": "soulless:soulsteel_block"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    "TST",
+    "SNS",
+    "TST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:rip"
+  }
+}

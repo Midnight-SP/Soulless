@@ -25,7 +25,7 @@ public class GhostOrbItem extends Item {
             ghostOrb.setDeltaMovement(player.getLookAngle().scale(1.0));
             level.addFreshEntity(ghostOrb);
             level.playSound(null, player.getX(), player.getY(), player.getZ(), 
-                SoundEvents.GHAST_SHOOT, SoundSource.PLAYERS, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+                SoundEvents.WITHER_SHOOT, SoundSource.PLAYERS, 2.5F, 1.0F);
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));

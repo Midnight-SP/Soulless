@@ -2,6 +2,7 @@ package com.midnightsp.soulless;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.TntRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -34,5 +35,6 @@ public class SoullessModClient {
 
         // Register entity renderers
         EntityRenderers.register(SoullessEntities.GHOST_ORB.get(), context -> new ThrownItemRenderer(context, 1.0F, true));
+        EntityRenderers.register(SoullessEntities.RIP_PRIMED.get(), TntRenderer::new);
     }
 }
