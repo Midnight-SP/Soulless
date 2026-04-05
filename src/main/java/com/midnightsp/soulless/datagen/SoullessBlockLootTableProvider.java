@@ -30,10 +30,24 @@ public class SoullessBlockLootTableProvider extends BlockLootSubProvider {
                         .setRolls(UniformGenerator.between(2.0F, 4.0F))
                         .add(LootItem.lootTableItem(Items.BONE))))
         );
+
+        // RIP: Drops itself
+        this.dropSelf(SoullessMod.RIP.get());
+
+        // Soulsteel Block: Drops itself
+        this.dropSelf(SoullessMod.SOULSTEEL_BLOCK.get());
+
+        // Undead Core: Drops itself
+        this.dropSelf(SoullessMod.UNDEAD_CORE.get());
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return Set.of(SoullessMod.BONEYARD.get());
+        return Set.of(
+            SoullessMod.BONEYARD.get(),
+            SoullessMod.RIP.get(),
+            SoullessMod.SOULSTEEL_BLOCK.get(),
+            SoullessMod.UNDEAD_CORE.get()
+        );
     }
 }

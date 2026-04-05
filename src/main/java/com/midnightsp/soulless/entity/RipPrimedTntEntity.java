@@ -15,7 +15,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 import com.midnightsp.soulless.SoullessMod;
@@ -43,6 +45,7 @@ public class RipPrimedTntEntity extends PrimedTnt {
         if (!this.level().isClientSide && this.level() instanceof ServerLevel serverLevel) {
             serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.WITHER_SPAWN, SoundSource.BLOCKS, 12.5F, 1.0F);
             SoulBurstUtil.apply(serverLevel, this.position(), 50, 300, 600, true, this, this.getOwner());
+            serverLevel.addFreshEntity(new ItemEntity(serverLevel, this.getX(), this.getY(), this.getZ(), new ItemStack(SoullessMod.GHOST_HEART.get())));
             awardDetonationAdvancement(serverLevel);
         }
     }

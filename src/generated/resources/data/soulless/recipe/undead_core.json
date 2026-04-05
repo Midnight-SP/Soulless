@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "H": {
+      "item": "soulless:ghost_heart"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "DOD",
+    "OHO",
+    "DOD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:undead_core"
+  }
+}

@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import com.midnightsp.soulless.block.BoneyardBlock;
 import com.midnightsp.soulless.block.RipBlock;
+import com.midnightsp.soulless.block.UndeadCoreBlock;
 import com.midnightsp.soulless.datagen.SoullessRecipeProvider;
 import com.midnightsp.soulless.datagen.SoullessLootTableProvider;
 import com.midnightsp.soulless.entity.SoullessEntities;
@@ -13,6 +14,7 @@ import com.midnightsp.soulless.worldgen.SoullessWorldgen;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -41,6 +43,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -65,6 +68,7 @@ public class SoullessMod {
 
     // Creates a new Lost Souls item with the id "soulless:lost_souls"
     public static final DeferredItem<Item> LOST_SOULS = ITEMS.registerSimpleItem("lost_souls", new Item.Properties());
+    public static final DeferredItem<Item> GHOST_HEART = ITEMS.registerSimpleItem("ghost_heart", new Item.Properties());
     public static final DeferredItem<Item> GHOSTPOWDER = ITEMS.registerSimpleItem("ghostpowder", new Item.Properties());
     public static final DeferredItem<Item> SOULSTEEL_INGOT = ITEMS.registerSimpleItem("soulsteel_ingot", new Item.Properties());
     public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
@@ -77,7 +81,9 @@ public class SoullessMod {
     public static final DeferredItem<BlockItem> BONEYARD_ITEM = ITEMS.registerSimpleBlockItem("boneyard", BONEYARD);
     public static final DeferredBlock<Block> RIP = BLOCKS.register("rip", () -> new RipBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TNT)));
     public static final DeferredItem<BlockItem> RIP_ITEM = ITEMS.registerSimpleBlockItem("rip", RIP);
-    public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    public static final DeferredBlock<Block> UNDEAD_CORE = BLOCKS.register("undead_core", () -> new UndeadCoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN).strength(4.0F, 6.0F)));
+    public static final DeferredItem<BlockItem> UNDEAD_CORE_ITEM = ITEMS.registerSimpleBlockItem("undead_core", UNDEAD_CORE);
+    public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(3.0F, 6.0F));
     public static final DeferredItem<BlockItem> SOULSTEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("soulsteel_block", SOULSTEEL_BLOCK);
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -129,6 +135,7 @@ public class SoullessMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(LOST_SOULS);
+            event.accept(GHOST_HEART);
             event.accept(GHOSTPOWDER);
             event.accept(SOULSTEEL_INGOT);
         }
@@ -136,6 +143,7 @@ public class SoullessMod {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(SOULSTEEL_BLOCK_ITEM);
             event.accept(BONEYARD_ITEM);
+            event.accept(UNDEAD_CORE_ITEM);
         }
 
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
@@ -224,5 +232,15 @@ public class SoullessMod {
         for (String criterion : progress.getRemainingCriteria()) {
             serverPlayer.getAdvancements().award(advancement, criterion);
         }
+    }
+
+    @SubscribeEvent
+    public void onItemTooltip(ItemTooltipEvent event) {
+        if (!event.getItemStack().is(UNDEAD_CORE_ITEM.get())) {
+            return;
+        }
+
+        event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line1").withStyle(ChatFormatting.GRAY));
+        event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line2").withStyle(ChatFormatting.DARK_GRAY));
     }
 }

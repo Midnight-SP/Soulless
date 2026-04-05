@@ -1,0 +1,31 @@
+{
+  "parent": "soulless:the_ghostlands",
+  "display": {
+    "icon": {
+      "id": "soulless:undead_core"
+    },
+    "title": {
+      "translate": "advancement.soulless.deathwish.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.deathwish.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "place_undead_core": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "soulless:undead_core"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "place_undead_core"
+    ]
+  ]
+}

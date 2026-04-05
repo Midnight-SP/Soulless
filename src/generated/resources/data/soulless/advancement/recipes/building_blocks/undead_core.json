@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ghost_heart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:ghost_heart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "soulless:undead_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ghost_heart"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "soulless:undead_core"
+    ]
+  }
+}

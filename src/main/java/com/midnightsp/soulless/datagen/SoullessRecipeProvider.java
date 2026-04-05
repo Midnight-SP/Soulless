@@ -134,5 +134,16 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .define('D', Blocks.DIRT)
             .unlockedBy("has_lost_souls", has(SoullessMod.LOST_SOULS.get()))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "boneyard"));
+
+        // Undead Core: Ghost Heart in center, Obsidian on edges, Diamonds on corners
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, SoullessMod.UNDEAD_CORE.get())
+            .pattern("DOD")
+            .pattern("OHO")
+            .pattern("DOD")
+            .define('D', Items.DIAMOND)
+            .define('O', Blocks.OBSIDIAN)
+            .define('H', SoullessMod.GHOST_HEART.get())
+            .unlockedBy("has_ghost_heart", has(SoullessMod.GHOST_HEART.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "undead_core"));
     }
 }

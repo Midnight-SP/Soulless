@@ -9,11 +9,13 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 - Undead mobs drop Lost Souls when killed by a player.
 - Adds new materials and equipment:
 	- Ghostpowder (`soulless:ghostpowder`)
+	- Ghost Heart (`soulless:ghost_heart`)
 	- Soulsteel Ingot (`soulless:soulsteel_ingot`)
 	- Soulsteel Block (`soulless:soulsteel_block`)
 	- Soul Reaper (`soulless:soul_reaper`)
 	- Ghost Orb (`soulless:ghost_orb`)
 	- RIP (`soulless:rip`)
+	- Undead Core (`soulless:undead_core`)
 - Adds custom crafting progression:
 	- Lost Souls conversion recipes
 	- Ghostpowder and Soulsteel crafting recipes
@@ -34,6 +36,13 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 	- Triggers a 50-block Soul Burst on detonation
 	- Applies Poison, Blindness, and Glowing in burst radius for 30s
 	- Plays a long-range wither spawn detonation sound
+	- Drops Ghost Heart on detonation
+- Undead Core block:
+	- Crafted from Ghost Heart, Obsidian, and Diamonds
+	- Pulses every 2 seconds in a 50-block radius
+	- Only pulses when undead are nearby
+	- Applies Instant Health (damages undead), Weakness, Slowness, and Glowing
+	- Emits pulse particles and sound for easier visibility
 - Boneyard block:
 	- Spawns a skeleton when players approach in low block light
 	- Ignores creative/spectator players for activation
@@ -50,12 +59,13 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 	- (Don't Fear) The Reaper
 	- The Orb of Dreamers
 	- The GhostLands
+	- Deathwish
 
 ## Project Info
 
 - Mod ID: `soulless`
 - Name: `Soulless`
-- Version: `1.0.4`
+- Version: `1.0.5`
 - Minecraft: `1.21.1`
 - NeoForge: `21.1.222`
 - Group: `com.midnightsp.soulless`
