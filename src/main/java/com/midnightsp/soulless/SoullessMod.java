@@ -3,10 +3,13 @@ package com.midnightsp.soulless;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
+import com.midnightsp.soulless.block.BoneyardBlock;
 import com.midnightsp.soulless.block.RipBlock;
 import com.midnightsp.soulless.datagen.SoullessRecipeProvider;
+import com.midnightsp.soulless.datagen.SoullessLootTableProvider;
 import com.midnightsp.soulless.entity.SoullessEntities;
 import com.midnightsp.soulless.item.GhostOrbItem;
+import com.midnightsp.soulless.worldgen.SoullessWorldgen;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -70,6 +73,8 @@ public class SoullessMod {
     public static final DeferredItem<Item> GHOST_ORB = ITEMS.register("ghost_orb", () ->
         new GhostOrbItem(new Item.Properties().stacksTo(16))
     );
+    public static final DeferredBlock<Block> BONEYARD = BLOCKS.register("boneyard", () -> new BoneyardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).randomTicks()));
+    public static final DeferredItem<BlockItem> BONEYARD_ITEM = ITEMS.registerSimpleBlockItem("boneyard", BONEYARD);
     public static final DeferredBlock<Block> RIP = BLOCKS.register("rip", () -> new RipBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TNT)));
     public static final DeferredItem<BlockItem> RIP_ITEM = ITEMS.registerSimpleBlockItem("rip", RIP);
     public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
@@ -89,6 +94,8 @@ public class SoullessMod {
         CREATIVE_MODE_TABS.register(modEventBus);
         // Register entity types
         SoullessEntities.ENTITY_TYPES.register(modEventBus);
+        // Register worldgen types
+        SoullessWorldgen.register(modEventBus);
 
         // Register datagen event listener
         modEventBus.addListener(this::gatherData);
@@ -128,6 +135,7 @@ public class SoullessMod {
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(SOULSTEEL_BLOCK_ITEM);
+            event.accept(BONEYARD_ITEM);
         }
 
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
@@ -148,13 +156,13 @@ public class SoullessMod {
 
         if (event.includeServer()) {
             generator.addProvider(event.includeServer(), new SoullessRecipeProvider(packOutput, lookupProvider));
+            generator.addProvider(event.includeServer(), new SoullessLootTableProvider(packOutput, lookupProvider));
         }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 

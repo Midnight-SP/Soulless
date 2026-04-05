@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "soulless:ruins",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency_reduction_method": "legacy_type_1",
+    "frequency": 0.2,
+    "salt": 165745296,
+    "spacing": 32,
+    "separation": 8,
+    "spread_type": "linear"
+  }
+}

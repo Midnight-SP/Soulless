@@ -1,0 +1,33 @@
+{
+  "name": "soulless:ruins_start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "soulless:small_ruins",
+        "processors": "soulless:ruins_chest_loot",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "soulless:tiny_ruins",
+        "processors": "soulless:ruins_chest_loot",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "soulless:medium_ruins",
+        "processors": "soulless:ruins_chest_loot",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

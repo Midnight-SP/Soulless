@@ -34,6 +34,17 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 	- Triggers a 50-block Soul Burst on detonation
 	- Applies Poison, Blindness, and Glowing in burst radius for 30s
 	- Plays a long-range wither spawn detonation sound
+- Boneyard block:
+	- Spawns a skeleton when players approach in low block light
+	- Ignores creative/spectator players for activation
+	- Can spawn bow or stone-sword skeletons (50/50)
+	- Drops 2-4 bones when broken without Silk Touch
+- Ruins worldgen:
+	- Adds a new structure: Ruins (`soulless:ruins`)
+	- Uses three variants: small, tiny, and medium (randomly selected)
+	- Spawns in temperate land biomes with outpost-like rarity
+	- Uses Bone Chest loot in structure chests
+	- Includes water-veto placement logic to avoid ocean-surface generation
 - Adds custom advancements:
 	- Soulless
 	- (Don't Fear) The Reaper
@@ -44,7 +55,7 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 
 - Mod ID: `soulless`
 - Name: `Soulless`
-- Version: `1.0.3`
+- Version: `1.0.4`
 - Minecraft: `1.21.1`
 - NeoForge: `21.1.222`
 - Group: `com.midnightsp.soulless`

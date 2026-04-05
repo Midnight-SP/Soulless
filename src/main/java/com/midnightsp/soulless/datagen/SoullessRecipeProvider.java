@@ -123,5 +123,16 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .define('N', Items.NETHER_STAR)
             .unlockedBy("has_nether_star", has(Items.NETHER_STAR))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "rip"));
+
+        // Boneyard: Dirt surrounded by Bones and Lost Souls
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, SoullessMod.BONEYARD.get())
+            .pattern("BLB")
+            .pattern("LDL")
+            .pattern("BLB")
+            .define('B', Items.BONE)
+            .define('L', SoullessMod.LOST_SOULS.get())
+            .define('D', Blocks.DIRT)
+            .unlockedBy("has_lost_souls", has(SoullessMod.LOST_SOULS.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "boneyard"));
     }
 }
