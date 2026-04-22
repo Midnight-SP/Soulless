@@ -1,0 +1,29 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": { "id": "soulless:bat" },
+    "title": { "translate": "advancement.soulless.home_run" },
+    "description": { "translate": "advancement.soulless.home_run.desc" },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "kill_ghast_with_bat": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": { "items": "soulless:bat" }
+          }
+        },
+        "entity": { "type": "minecraft:ghast" }
+      }
+    }
+  },
+  "requirements": [
+    ["kill_ghast_with_bat"]
+  ]
+}

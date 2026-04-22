@@ -35,6 +35,7 @@ public class SoullessModClient {
 
         // Register entity renderers
         EntityRenderers.register(SoullessEntities.GHOST_ORB.get(), context -> new ThrownItemRenderer(context, 1.0F, true));
+        EntityRenderers.register(SoullessEntities.FIREBALL.get(), context -> new ThrownItemRenderer(context, 1.0F, true));
         EntityRenderers.register(SoullessEntities.RIP_PRIMED.get(), TntRenderer::new);
     }
 }

@@ -17,10 +17,7 @@
   },
   "criteria": {
     "place_undead_core": {
-      "trigger": "minecraft:placed_block",
-      "conditions": {
-        "block": "soulless:undead_core"
-      }
+      "trigger": "minecraft:impossible"
     }
   },
   "requirements": [

@@ -1,0 +1,37 @@
+{
+  "itemGroup.soulless": "Bezduszne",
+  "item.soulless.lost_souls": "Zagubione dusze",
+  "item.soulless.ghost_heart": "Serce zjaw",
+  "item.soulless.ghostpowder": "Zjawoproch",
+  "item.soulless.soulsteel_ingot": "Sztabka duszstali",
+  "item.soulless.soul_reaper": "Żniwiarz dusz",
+  "item.soulless.ghost_orb": "Kula zjaw",
+  "item.soulless.fireball": "Kula ognia",
+  "item.soulless.bat": "Kij baseballowy",
+  "block.soulless.undead_core": "Rdzeń nieumarłych",
+  "block.soulless.boneyard": "Cmentarzysko",
+  "block.soulless.rip": "RIP",
+  "block.soulless.soulsteel_block": "Blok duszstali",
+
+  "advancement.soulless.soulless.title": "Bezduszne",
+  "advancement.soulless.soulless.description": "Znajdź dusze zgubione przez umarłych",
+  "advancement.soulless.dont_fear_the_reaper.title": "Nim wstanie dzień",
+  "advancement.soulless.dont_fear_the_reaper.description": "Znajdź łatwiejszy sposób na zdobycie zagubionych dusz",
+  "advancement.soulless.the_orb_of_dreamers.title": "Kula marzycieli",
+  "advancement.soulless.the_orb_of_dreamers.description": "To miejsce potrzebuje więcej duszy",
+  "advancement.soulless.the_ghostlands.title": "Ziemie zjaw",
+  "advancement.soulless.the_ghostlands.description": "Zamień świat w pustkowie",
+  "advancement.soulless.deathwish.title": "Żądza śmierci",
+  "advancement.soulless.deathwish.description": "Chroń swoją bazę przed nieumarłymi stworzeniami",
+  "advancement.soulless.home_run": "Ale baza!",
+  "advancement.soulless.home_run.desc": "Odbij kulę ognia kijem baseballowym",
+
+  "tooltip.soulless.undead_core.line1": "Pulsuje co 2 sekundy w promieniu 50 bloków.",
+  "tooltip.soulless.undead_core.line2": "Nieumarłe istoty są ranione, osłabione i spowolnione.",
+
+  "soulless.configuration.title": "Soulless Configs",
+  "soulless.configuration.section.soulless.common.toml": "Soulless Configs",
+  "soulless.configuration.section.soulless.common.toml.title": "Soulless Configs",
+  "soulless.configuration.items": "Item List",
+  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+}

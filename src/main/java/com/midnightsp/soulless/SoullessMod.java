@@ -65,6 +65,7 @@ public class SoullessMod {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "soulless" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static ResourceLocation SOULLESS_TAB_KEY;
 
     // Creates a new Lost Souls item with the id "soulless:lost_souls"
     public static final DeferredItem<Item> LOST_SOULS = ITEMS.registerSimpleItem("lost_souls", new Item.Properties());
@@ -74,8 +75,16 @@ public class SoullessMod {
     public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
         new SwordItem(Tiers.DIAMOND, new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F)))
     );
+    public static final DeferredItem<Item> BAT = ITEMS.register("bat", () ->
+        new com.midnightsp.soulless.item.BatItem(new Item.Properties().attributes(
+            SwordItem.createAttributes(Tiers.WOOD, 2, -2.0F)
+        ))
+    );
     public static final DeferredItem<Item> GHOST_ORB = ITEMS.register("ghost_orb", () ->
         new GhostOrbItem(new Item.Properties().stacksTo(16))
+    );
+    public static final DeferredItem<Item> FIREBALL = ITEMS.register("fireball", () ->
+        new com.midnightsp.soulless.item.FireballItem(new Item.Properties().stacksTo(16))
     );
     public static final DeferredBlock<Block> BONEYARD = BLOCKS.register("boneyard", () -> new BoneyardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).randomTicks()));
     public static final DeferredItem<BlockItem> BONEYARD_ITEM = ITEMS.registerSimpleBlockItem("boneyard", BONEYARD);
@@ -89,6 +98,26 @@ public class SoullessMod {
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public SoullessMod(IEventBus modEventBus, ModContainer modContainer) {
+        // Register creative tab after all items/blocks are defined
+        var tab = CREATIVE_MODE_TABS.register("soulless_tab", () -> CreativeModeTab.builder()
+            .icon(() -> new ItemStack(LOST_SOULS.get()))
+            .title(Component.translatable("itemGroup.soulless"))
+            .displayItems((params, output) -> {
+                output.accept(LOST_SOULS.get());
+                output.accept(GHOST_HEART.get());
+                output.accept(GHOSTPOWDER.get());
+                output.accept(SOULSTEEL_INGOT.get());
+                output.accept(SOUL_REAPER.get());
+                output.accept(BAT.get());
+                output.accept(GHOST_ORB.get());
+                output.accept(FIREBALL.get());
+                output.accept(SOULSTEEL_BLOCK_ITEM.get());
+                output.accept(BONEYARD_ITEM.get());
+                output.accept(UNDEAD_CORE_ITEM.get());
+                output.accept(RIP_ITEM.get());
+            })
+            .build());
+        SOULLESS_TAB_KEY = tab.getId();
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -133,26 +162,19 @@ public class SoullessMod {
 
     // Add the Lost Souls item to the materials tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey().equals(SOULLESS_TAB_KEY)) {
             event.accept(LOST_SOULS);
             event.accept(GHOST_HEART);
             event.accept(GHOSTPOWDER);
             event.accept(SOULSTEEL_INGOT);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(SOUL_REAPER);
+            event.accept(BAT);
+            event.accept(GHOST_ORB);
+            event.accept(FIREBALL);
             event.accept(SOULSTEEL_BLOCK_ITEM);
             event.accept(BONEYARD_ITEM);
             event.accept(UNDEAD_CORE_ITEM);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
             event.accept(RIP_ITEM);
-        }
-
-        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-            event.accept(SOUL_REAPER);
-            event.accept(GHOST_ORB);
         }
     }
 

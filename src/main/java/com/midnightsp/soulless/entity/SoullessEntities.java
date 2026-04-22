@@ -19,6 +19,15 @@ public class SoullessEntities {
             .build("soulless:ghost_orb")
     );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<FireballEntity>> FIREBALL = ENTITY_TYPES.register("fireball", () ->
+        EntityType.Builder.<FireballEntity>of(FireballEntity::new, MobCategory.MISC)
+            .sized(1.0F, 1.0F)
+            .fireImmune()
+            .clientTrackingRange(4)
+            .updateInterval(10)
+            .build("soulless:fireball")
+    );
+
     public static final DeferredHolder<EntityType<?>, EntityType<RipPrimedTntEntity>> RIP_PRIMED = ENTITY_TYPES.register("rip_primed", () ->
         EntityType.Builder.<RipPrimedTntEntity>of(RipPrimedTntEntity::new, MobCategory.MISC)
             .fireImmune()
