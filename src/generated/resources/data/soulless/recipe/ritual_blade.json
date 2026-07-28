@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        " S ",
+        " A "
+    ],
+    "key": {
+        "S": {
+            "item": "soulless:soulsteel_ingot"
+        },
+        "A": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "soulless:ritual_blade",
+        "count": 1
+    }
+}

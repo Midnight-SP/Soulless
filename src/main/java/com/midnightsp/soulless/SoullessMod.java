@@ -11,7 +11,10 @@ import com.midnightsp.soulless.datagen.SoullessLootTableProvider;
 import com.midnightsp.soulless.entity.SoullessEntities;
 import com.midnightsp.soulless.event.GhostHeartEventHandler;
 import com.midnightsp.soulless.item.GhostHeartItem;
+import com.midnightsp.soulless.item.BloodOrbItem;
 import com.midnightsp.soulless.item.GhostOrbItem;
+import com.midnightsp.soulless.item.RitualBladeItem;
+import com.midnightsp.soulless.item.BloodtakerBladeItem;
 import com.midnightsp.soulless.worldgen.SoullessWorldgen;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -83,6 +86,18 @@ public class SoullessMod {
     public static final DeferredItem<Item> FIREBALL = ITEMS.register("fireball", () ->
         new com.midnightsp.soulless.item.FireballItem(new Item.Properties().stacksTo(16))
     );
+    public static final DeferredItem<Item> BLOOD_ORB = ITEMS.register("blood_orb", () ->
+        new BloodOrbItem(new Item.Properties()
+            .stacksTo(16)
+        )
+    );
+    public static final DeferredItem<Item> RITUAL_BLADE = ITEMS.register("ritual_blade", 
+        RitualBladeItem::new
+    );
+    public static final DeferredItem<Item> BLOODTAKER_BLADE = ITEMS.register("bloodtaker_blade", 
+        BloodtakerBladeItem::new
+    );
+    
     public static final DeferredBlock<Block> BONEYARD = BLOCKS.register("boneyard", () -> new BoneyardBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).randomTicks()));
     public static final DeferredItem<BlockItem> BONEYARD_ITEM = ITEMS.registerSimpleBlockItem("boneyard", BONEYARD);
     public static final DeferredBlock<Block> RIP = BLOCKS.register("rip", () -> new RipBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TNT)));
@@ -105,6 +120,9 @@ public class SoullessMod {
                 output.accept(BAT.get());
                 output.accept(GHOST_ORB.get());
                 output.accept(FIREBALL.get());
+                output.accept(BLOOD_ORB.get());
+                output.accept(RITUAL_BLADE.get()); // ADD THIS
+                output.accept(BLOODTAKER_BLADE.get()); // ADD THIS
                 output.accept(SOULSTEEL_BLOCK_ITEM.get());
                 output.accept(BONEYARD_ITEM.get());
                 output.accept(UNDEAD_CORE_ITEM.get());
@@ -153,6 +171,7 @@ public class SoullessMod {
             event.accept(BAT);
             event.accept(GHOST_ORB);
             event.accept(FIREBALL);
+            event.accept(BLOOD_ORB);
             event.accept(SOULSTEEL_BLOCK_ITEM);
             event.accept(BONEYARD_ITEM);
             event.accept(UNDEAD_CORE_ITEM);

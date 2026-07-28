@@ -1,0 +1,36 @@
+{
+  "parent": "soulless:bloody_ritual",
+  "display": {
+    "icon": {
+      "id": "soulless:blood_orb"
+    },
+    "title": {
+      "translate": "advancement.soulless.taste_of_blood.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.taste_of_blood.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "consumed_blood_orb": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "soulless:blood_orb"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "consumed_blood_orb"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  }
+}

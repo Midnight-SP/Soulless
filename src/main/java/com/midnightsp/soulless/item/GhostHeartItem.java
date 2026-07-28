@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
 public class GhostHeartItem extends Item {
-    public GhostHeartItem(Item.Properties properties) {
+    public GhostHeartItem(Properties properties) {
         super(properties);
     }
 
