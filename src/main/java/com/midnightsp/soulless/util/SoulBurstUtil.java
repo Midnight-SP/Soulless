@@ -87,7 +87,6 @@ public final class SoulBurstUtil {
             }
         }
 
-        // Apply wither roses first so foliage is preserved before supporting blocks are transformed.
         for (BlockPos pos : witherRoseCandidates) {
             BlockState currentState = level.getBlockState(pos);
             if (currentState.isAir() || !currentState.getFluidState().isEmpty()) {

@@ -22,7 +22,6 @@ public class SoullessBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        // Boneyard: Drops 2-4 bones
         this.add(SoullessMod.BONEYARD.get(), 
             LootTable.lootTable()
                 .withPool(this.applyExplosionDecay(SoullessMod.BONEYARD.get(),
@@ -31,13 +30,8 @@ public class SoullessBlockLootTableProvider extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(Items.BONE))))
         );
 
-        // RIP: Drops itself
         this.dropSelf(SoullessMod.RIP.get());
-
-        // Soulsteel Block: Drops itself
         this.dropSelf(SoullessMod.SOULSTEEL_BLOCK.get());
-
-        // Undead Core: Drops itself
         this.dropSelf(SoullessMod.UNDEAD_CORE.get());
     }
 

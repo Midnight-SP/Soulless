@@ -52,22 +52,15 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(SoullessMod.MODID)
 public class SoullessMod {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "soulless";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "soulless" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "soulless" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "soulless" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
     public static ResourceLocation SOULLESS_TAB_KEY;
 
-    // Creates a new Lost Souls item with the id "soulless:lost_souls"
     public static final DeferredItem<Item> LOST_SOULS = ITEMS.registerSimpleItem("lost_souls", new Item.Properties());
     public static final DeferredItem<Item> GHOST_HEART = ITEMS.registerSimpleItem("ghost_heart", new Item.Properties());
     public static final DeferredItem<Item> GHOSTPOWDER = ITEMS.registerSimpleItem("ghostpowder", new Item.Properties());
@@ -95,10 +88,7 @@ public class SoullessMod {
     public static final DeferredBlock<Block> SOULSTEEL_BLOCK = BLOCKS.registerSimpleBlock("soulsteel_block", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(3.0F, 6.0F));
     public static final DeferredItem<BlockItem> SOULSTEEL_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("soulsteel_block", SOULSTEEL_BLOCK);
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public SoullessMod(IEventBus modEventBus, ModContainer modContainer) {
-        // Register creative tab after all items/blocks are defined
         var tab = CREATIVE_MODE_TABS.register("soulless_tab", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(LOST_SOULS.get()))
             .title(Component.translatable("itemGroup.soulless"))
@@ -118,37 +108,24 @@ public class SoullessMod {
             })
             .build());
         SOULLESS_TAB_KEY = tab.getId();
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
-        // Register entity types
         SoullessEntities.ENTITY_TYPES.register(modEventBus);
-        // Register worldgen types
         SoullessWorldgen.register(modEventBus);
 
-        // Register datagen event listener
         modEventBus.addListener(this::gatherData);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (SoullessMod) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
 
         if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
@@ -160,7 +137,6 @@ public class SoullessMod {
         Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
-    // Add the Lost Souls item to the materials tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(SOULLESS_TAB_KEY)) {
             event.accept(LOST_SOULS);
@@ -178,7 +154,6 @@ public class SoullessMod {
         }
     }
 
-    // Register datagen providers
     private void gatherData(GatherDataEvent event) {
         var generator = event.getGenerator();
         var packOutput = generator.getPackOutput();
@@ -190,7 +165,6 @@ public class SoullessMod {
         }
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("HELLO from server starting");

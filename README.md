@@ -21,6 +21,7 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 
 - Adds custom crafting progression:
   - Lost Souls conversion recipes
+  - Ghostpowder conversion recipes
   - Ghostpowder and Soulsteel crafting recipes
   - Soulsteel block packing/unpacking (9 <-> 1)
   - Soul Reaper and Bat crafting recipes
@@ -42,7 +43,7 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
 
 - Mod ID: `soulless`
 - Name: `Soulless`
-- Version: `1.0.0`
+- Version: `1.0.1`
 - Minecraft: `1.21.1`
 - NeoForge: `21.1.222`
 - Group: `com.midnightsp.soulless`

@@ -10,8 +10,8 @@
     "frequency_reduction_method": "legacy_type_1",
     "frequency": 0.2,
     "salt": 165745296,
-    "spacing": 32,
-    "separation": 8,
+    "spacing": 16,
+    "separation": 4,
     "spread_type": "linear"
   }
 }

@@ -55,7 +55,6 @@ public class UndeadCoreBlock extends Block {
         level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, pos.getX() + 0.5D, pos.getY() + 1.1D, pos.getZ() + 0.5D, 24, 0.35D, 0.2D, 0.35D, 0.01D);
 
         for (LivingEntity entity : undeadInRange) {
-            // Instant Health damages undead; reapply every pulse.
             entity.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, true, true));
             entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0, true, true));
             entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1, true, true));

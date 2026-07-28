@@ -43,16 +43,14 @@ public class BoneyardBlock extends Block {
     }
 
     private void trySpawnSkeleton(BlockState state, ServerLevel level, BlockPos pos) {
-        // Only block light matters for the base check.
         if (level.getBrightness(LightLayer.BLOCK, pos.above()) > 7) {
             return;
         }
 
-        // If there's any sky light, it must be night time (12000-23999 ticks).
         if (level.getBrightness(LightLayer.SKY, pos.above()) > 0) {
             long dayTime = level.getDayTime() % 24000L;
             if (dayTime < 12000L) {
-                return;  // Daytime
+                return;
             }
         }
 
@@ -81,7 +79,6 @@ public class BoneyardBlock extends Block {
         level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
         skeleton.moveTo(spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, level.random.nextFloat() * 360.0F, 0.0F);
         
-        // Randomly give skeleton either a bow or stone sword (50/50).
         if (level.random.nextBoolean()) {
             skeleton.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
         } else {
