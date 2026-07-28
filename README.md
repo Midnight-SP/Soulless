@@ -10,7 +10,7 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
   - **Bat** (`soulless:bat`): A wooden melee weapon with extra knockback. Is used for the "Home Run" advancement.
   - **Fireball** (`soulless:fireball`): Throwable item that launches a custom fireball entity, similar to a ghast fireball.
   - **Ghostpowder** (`soulless:ghostpowder`): Crafting material.
-  - **Ghost Heart** (`soulless:ghost_heart`): Crafting material.
+  - **Ghost Heart** (`soulless:ghost_heart`): When held you get health boost, regeneration, hunger and mining fatigue IV.
   - **Soulsteel Ingot** (`soulless:soulsteel_ingot`): Crafting material.
   - **Soulsteel Block** (`soulless:soulsteel_block`): New block.
   - **Soul Reaper** (`soulless:soul_reaper`): Doubles Lost Souls drops and deals double damage to undead mobs.

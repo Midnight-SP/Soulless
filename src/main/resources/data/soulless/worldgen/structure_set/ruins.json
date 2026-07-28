@@ -11,7 +11,7 @@
     "frequency": 0.2,
     "salt": 165745296,
     "spacing": 16,
-    "separation": 4,
+    "separation": 8,
     "spread_type": "linear"
   }
 }

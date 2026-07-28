@@ -9,6 +9,8 @@ import com.midnightsp.soulless.block.UndeadCoreBlock;
 import com.midnightsp.soulless.datagen.SoullessRecipeProvider;
 import com.midnightsp.soulless.datagen.SoullessLootTableProvider;
 import com.midnightsp.soulless.entity.SoullessEntities;
+import com.midnightsp.soulless.event.GhostHeartEventHandler;
+import com.midnightsp.soulless.item.GhostHeartItem;
 import com.midnightsp.soulless.item.GhostOrbItem;
 import com.midnightsp.soulless.worldgen.SoullessWorldgen;
 
@@ -62,7 +64,9 @@ public class SoullessMod {
     public static ResourceLocation SOULLESS_TAB_KEY;
 
     public static final DeferredItem<Item> LOST_SOULS = ITEMS.registerSimpleItem("lost_souls", new Item.Properties());
-    public static final DeferredItem<Item> GHOST_HEART = ITEMS.registerSimpleItem("ghost_heart", new Item.Properties());
+    public static final DeferredItem<Item> GHOST_HEART = ITEMS.register("ghost_heart", () ->
+        new GhostHeartItem(new Item.Properties().stacksTo(1).fireResistant())
+    );
     public static final DeferredItem<Item> GHOSTPOWDER = ITEMS.registerSimpleItem("ghostpowder", new Item.Properties());
     public static final DeferredItem<Item> SOULSTEEL_INGOT = ITEMS.registerSimpleItem("soulsteel_ingot", new Item.Properties());
     public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
@@ -117,6 +121,8 @@ public class SoullessMod {
         SoullessWorldgen.register(modEventBus);
 
         modEventBus.addListener(this::gatherData);
+
+        NeoForge.EVENT_BUS.register(new GhostHeartEventHandler());
 
         NeoForge.EVENT_BUS.register(this);
 
