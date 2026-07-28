@@ -18,13 +18,16 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
   - **RIP** (`soulless:rip`): TNT-like block crafted from Nether Star, TNT, and Soulsteel Blocks. Manual ignition only, triggers a 50-block Soul Burst, applies effects, and drops Ghost Heart.
   - **Undead Core** (`soulless:undead_core`): Crafted from Ghost Heart, Obsidian, and Diamonds. Pulses every 2 seconds in a 50-block radius, applies effects to undead, and emits particles and sound.
   - **Boneyard** (`soulless:boneyard`): Spawns a skeleton when players approach in low block light, can spawn bow or stone-sword skeletons, drops bones when broken without Silk Touch.
+  - **Ritual Blade** (`soulless:ritual_blade`): Weak weapon that can be used to perform a ritual - you hurt yourself to get Strength II and Speed II for 30 seconds, blade transforms into Bloodtaker Blade.
+  - **Bloodtaker Blade** (`soulless:bloodtaker_blade`): Strong weapon, when you kill a non-undead mob with it you get Blood Orbs and it transfroms into Ritual Blade.
+  - **Blood Orb** (`soulless:blood_orb): Consumable item that you receive from rituals, used for healing.
 
 - Adds custom crafting progression:
   - Lost Souls conversion recipes
   - Ghostpowder conversion recipes
   - Ghostpowder and Soulsteel crafting recipes
   - Soulsteel block packing/unpacking (9 <-> 1)
-  - Soul Reaper and Bat crafting recipes
+  - Soul Reaper, Ritual Blade and Bat crafting recipes
 
 - Adds custom advancements:
   - **Soulless**: Obtain Lost Souls.
@@ -33,6 +36,8 @@ Soulless is a NeoForge mod for Minecraft 1.21.1.
   - **The GhostLands**: Detonate a RIP block.
   - **Deathwish**: Place the Undead Core.
   - **Home Run**: Deflect a fireball with a bat.
+  - **Bloody Ritual**: Use the Ritual Blade to perform a ritual.
+  - **Taste of Blood**: Consume blood.
 
 - Adds worldgen and structures:
   - **Ruins**: New structure with three variants (small, tiny, medium), spawns in temperate land biomes, uses Bone Chest loot, and avoids ocean-surface generation.
