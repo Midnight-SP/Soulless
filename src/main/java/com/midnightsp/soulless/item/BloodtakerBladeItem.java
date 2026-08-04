@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 public class BloodtakerBladeItem extends SwordItem {
     public BloodtakerBladeItem() {
         super(Tiers.NETHERITE, new Properties()
+            .attributes(SwordItem.createAttributes(Tiers.NETHERITE, 4, -2.4F))
             .durability(0)
             .setNoRepair()
             .stacksTo(1)

@@ -13,6 +13,8 @@ import com.midnightsp.soulless.event.GhostHeartEventHandler;
 import com.midnightsp.soulless.item.GhostHeartItem;
 import com.midnightsp.soulless.item.BloodOrbItem;
 import com.midnightsp.soulless.item.GhostOrbItem;
+import com.midnightsp.soulless.item.MonstrousStewItem;
+import com.midnightsp.soulless.item.ReturnTokenItem;
 import com.midnightsp.soulless.item.RitualBladeItem;
 import com.midnightsp.soulless.item.BloodtakerBladeItem;
 import com.midnightsp.soulless.worldgen.SoullessWorldgen;
@@ -71,6 +73,8 @@ public class SoullessMod {
         new GhostHeartItem(new Item.Properties().stacksTo(1).fireResistant())
     );
     public static final DeferredItem<Item> GHOSTPOWDER = ITEMS.registerSimpleItem("ghostpowder", new Item.Properties());
+    public static final DeferredItem<Item> GOLD_SOULS = ITEMS.registerSimpleItem("gold_souls", new Item.Properties());
+    public static final DeferredItem<Item> SOULPOWDER = ITEMS.registerSimpleItem("soulpowder", new Item.Properties());
     public static final DeferredItem<Item> SOULSTEEL_INGOT = ITEMS.registerSimpleItem("soulsteel_ingot", new Item.Properties());
     public static final DeferredItem<Item> SOUL_REAPER = ITEMS.register("soul_reaper", () ->
         new SwordItem(Tiers.DIAMOND, new Item.Properties().attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -2.4F)))
@@ -90,6 +94,12 @@ public class SoullessMod {
         new BloodOrbItem(new Item.Properties()
             .stacksTo(16)
         )
+    );
+    public static final DeferredItem<Item> MONSTROUS_STEW = ITEMS.register("monstrous_stew", () ->
+        new MonstrousStewItem(new Item.Properties())
+    );
+    public static final DeferredItem<Item> RETURN_TOKEN = ITEMS.register("return_token", () ->
+        new ReturnTokenItem(new Item.Properties().stacksTo(1))
     );
     public static final DeferredItem<Item> RITUAL_BLADE = ITEMS.register("ritual_blade", 
         RitualBladeItem::new
@@ -115,14 +125,18 @@ public class SoullessMod {
                 output.accept(LOST_SOULS.get());
                 output.accept(GHOST_HEART.get());
                 output.accept(GHOSTPOWDER.get());
+                output.accept(GOLD_SOULS.get());
+                output.accept(SOULPOWDER.get());
                 output.accept(SOULSTEEL_INGOT.get());
                 output.accept(SOUL_REAPER.get());
                 output.accept(BAT.get());
                 output.accept(GHOST_ORB.get());
                 output.accept(FIREBALL.get());
                 output.accept(BLOOD_ORB.get());
-                output.accept(RITUAL_BLADE.get()); // ADD THIS
-                output.accept(BLOODTAKER_BLADE.get()); // ADD THIS
+                output.accept(MONSTROUS_STEW.get());
+                output.accept(RETURN_TOKEN.get());
+                output.accept(RITUAL_BLADE.get());
+                output.accept(BLOODTAKER_BLADE.get());
                 output.accept(SOULSTEEL_BLOCK_ITEM.get());
                 output.accept(BONEYARD_ITEM.get());
                 output.accept(UNDEAD_CORE_ITEM.get());
@@ -166,12 +180,16 @@ public class SoullessMod {
             event.accept(LOST_SOULS);
             event.accept(GHOST_HEART);
             event.accept(GHOSTPOWDER);
+            event.accept(GOLD_SOULS);
+            event.accept(SOULPOWDER);
             event.accept(SOULSTEEL_INGOT);
             event.accept(SOUL_REAPER);
             event.accept(BAT);
             event.accept(GHOST_ORB);
             event.accept(FIREBALL);
             event.accept(BLOOD_ORB);
+            event.accept(MONSTROUS_STEW);
+            event.accept(RETURN_TOKEN);
             event.accept(SOULSTEEL_BLOCK_ITEM);
             event.accept(BONEYARD_ITEM);
             event.accept(UNDEAD_CORE_ITEM);
@@ -238,11 +256,13 @@ public class SoullessMod {
             return;
         }
 
-        if (!event.getItemStack().is(GHOST_ORB.get())) {
+        if (!event.getItemStack().is(GHOST_ORB.get()) && !event.getItemStack().is(RETURN_TOKEN.get())) {
             return;
         }
 
-        var advancementId = ResourceLocation.fromNamespaceAndPath(MODID, "the_orb_of_dreamers");
+        var advancementId = event.getItemStack().is(RETURN_TOKEN.get())
+            ? ResourceLocation.fromNamespaceAndPath(MODID, "ticket_home")
+            : ResourceLocation.fromNamespaceAndPath(MODID, "the_orb_of_dreamers");
         var advancement = serverPlayer.server.getAdvancements().get(advancementId);
 
         if (advancement == null) {
@@ -257,11 +277,44 @@ public class SoullessMod {
 
     @SubscribeEvent
     public void onItemTooltip(ItemTooltipEvent event) {
-        if (!event.getItemStack().is(UNDEAD_CORE_ITEM.get())) {
+        if (event.getItemStack().is(UNDEAD_CORE_ITEM.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line1").withStyle(ChatFormatting.GRAY));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line2").withStyle(ChatFormatting.DARK_GRAY));
             return;
         }
 
-        event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line1").withStyle(ChatFormatting.GRAY));
-        event.getToolTip().add(Component.translatable("tooltip.soulless.undead_core.line2").withStyle(ChatFormatting.DARK_GRAY));
+        if (event.getItemStack().is(RETURN_TOKEN.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.return_token.line1").withStyle(ChatFormatting.GRAY));
+            return;
+        }
+
+        if (event.getItemStack().is(RIP_ITEM.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.rip.line1").withStyle(ChatFormatting.GRAY));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.rip.line2").withStyle(ChatFormatting.DARK_GRAY));
+            return;
+        }
+
+        if (event.getItemStack().is(GHOST_HEART.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.ghost_heart.line1").withStyle(ChatFormatting.GRAY));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.ghost_heart.line2").withStyle(ChatFormatting.DARK_GRAY));
+            return;
+        }
+
+        if (event.getItemStack().is(SOUL_REAPER.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.soul_reaper.line1").withStyle(ChatFormatting.GRAY));
+            return;
+        }
+
+        if (event.getItemStack().is(RITUAL_BLADE.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.ritual_blade.line1").withStyle(ChatFormatting.GRAY));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.ritual_blade.line2").withStyle(ChatFormatting.DARK_GRAY));
+            return;
+        }
+
+        if (event.getItemStack().is(BLOODTAKER_BLADE.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.bloodtaker_blade.line1").withStyle(ChatFormatting.GRAY));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.bloodtaker_blade.line2").withStyle(ChatFormatting.DARK_GRAY));
+            return;
+        }
     }
 }

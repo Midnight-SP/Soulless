@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "soulless:ghostpowder_from_lost_souls_sugar_gunpowder_redstone"
+        "recipe": "soulless:ghostpowder_from_lost_souls_soulpowder_gunpowder_redstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "soulless:ghostpowder_from_lost_souls_sugar_gunpowder_redstone"
+      "soulless:ghostpowder_from_lost_souls_soulpowder_gunpowder_redstone"
     ]
   }
 }

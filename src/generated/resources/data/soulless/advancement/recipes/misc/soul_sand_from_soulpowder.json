@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soulpowder": {
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulpowder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "soulless:soul_sand_from_soulpowder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soulpowder"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "soulless:soul_sand_from_soulpowder"
+    ]
+  }
+}

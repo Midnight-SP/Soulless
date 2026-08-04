@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 public class RitualBladeItem extends SwordItem {
     public RitualBladeItem() {
         super(Tiers.WOOD, new Properties()
+            .attributes(SwordItem.createAttributes(Tiers.WOOD, 1, -2.4F))
             .durability(0)
             .setNoRepair()
             .stacksTo(1)

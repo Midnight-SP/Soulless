@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "soulless:gold_souls"
+    },
+    {
+      "item": "soulless:gold_souls"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:golden_apple"
+  }
+}

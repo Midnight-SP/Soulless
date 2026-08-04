@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "entries": [
+    "soulless:soulsteel_ancient_city",
+    "soulless:soulsteel_woodland_mansion",
+    "soulless:soulsteel_bastion_bridge",
+    "soulless:soulsteel_bastion_hoglin_stable",
+    "soulless:soulsteel_bastion_treasure",
+    "soulless:soulsteel_bastion_units",
+    "soulless:soulsteel_fortress",
+    "soulless:soulpowder_desert_pyramid",
+    "soulless:soulpowder_jungle_temple",
+    "soulless:soulpowder_ocean_ruin_cold",
+    "soulless:soulpowder_ocean_ruin_warm",
+    "soulless:lost_souls_ruined_portal",
+    "soulless:lost_souls_mineshaft",
+    "soulless:lost_souls_dungeon",
+    "soulless:blood_orb_ancient_city",
+    "soulless:blood_orb_mineshaft",
+    "soulless:blood_orb_dungeon",
+    "soulless:blood_orb_stronghold_corridor",
+    "soulless:blood_orb_stronghold_crossing",
+    "soulless:blood_orb_stronghold_library",
+    "soulless:blood_orb_igloo",
+    "soulless:gold_souls_fortress",
+    "soulless:gold_souls_bastion_bridge",
+    "soulless:gold_souls_bastion_hoglin_stable",
+    "soulless:gold_souls_bastion_treasure",
+    "soulless:gold_souls_bastion_units"
+  ]
+}

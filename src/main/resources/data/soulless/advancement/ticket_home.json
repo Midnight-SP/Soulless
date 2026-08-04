@@ -1,0 +1,29 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:return_token"
+    },
+    "title": {
+      "translate": "advancement.soulless.ticket_home.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.ticket_home.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "use_return_token": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "use_return_token"
+    ]
+  ]
+}

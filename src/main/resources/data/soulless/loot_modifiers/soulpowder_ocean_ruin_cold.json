@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ocean_ruin_cold"
+    }
+  ],
+  "table": "soulless:chests/soulpowder_bonus"
+}

@@ -1,20 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " S ",
-        " S ",
-        " A "
-    ],
-    "key": {
-        "S": {
-            "item": "soulless:soulsteel_ingot"
-        },
-        "A": {
-            "item": "minecraft:stick"
-        }
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
     },
-    "result": {
-        "id": "soulless:ritual_blade",
-        "count": 1
+    "S": {
+      "item": "soulless:soulsteel_ingot"
     }
+  },
+  "pattern": [
+    "S",
+    "S",
+    "A"
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:ritual_blade"
+  }
 }
