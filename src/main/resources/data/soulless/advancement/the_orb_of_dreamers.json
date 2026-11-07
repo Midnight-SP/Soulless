@@ -1,5 +1,5 @@
 {
-  "parent": "soulless:soulless",
+  "parent": "soulless:blinding_dust",
   "display": {
     "icon": {
       "id": "soulless:ghost_orb"
@@ -24,5 +24,8 @@
     [
       "use_ghost_orb"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:soulsteel_ingot",
+  "display": {
+    "icon": {
+      "id": "soulless:soulbreaker"
+    },
+    "title": {
+      "translate": "advancement.soulless.ghostly_excavation.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.ghostly_excavation.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger_ghost_miners": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger_ghost_miners"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
+}
+

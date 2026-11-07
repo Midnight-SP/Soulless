@@ -1,5 +1,11 @@
 package com.midnightsp.soulless.item;
 
+import com.midnightsp.soulless.SoullessMod;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,6 +38,35 @@ public class BloodOrbItem extends Item {
                 true,
                 true
             ));
+
+            if (entity instanceof Player player) {
+                CompoundTag tag = player.getPersistentData();
+                int consumed = tag.getInt("SoullessBloodConsumed") + 1;
+                tag.putInt("SoullessBloodConsumed", consumed);
+
+                if (consumed >= 32) {
+                    player.addEffect(new MobEffectInstance(
+                        SoullessMod.VAMPIRISM_EFFECT,
+                        MobEffectInstance.INFINITE_DURATION,
+                        0,
+                        false,
+                        false,
+                        true
+                    ));
+
+                    if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+                        SoullessMod.grantAdvancement(serverPlayer, "draculas_curse");
+                    }
+
+                    if (consumed == 32) {
+                        player.displayClientMessage(
+                            Component.translatable("message.soulless.vampirism_awakened").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD),
+                            true
+                        );
+                        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SPAWN, SoundSource.PLAYERS, 0.7F, 0.6F);
+                    }
+                }
+            }
         }
 
         return super.finishUsingItem(stack, level, entity);

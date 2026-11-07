@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:draculas_curse",
+  "display": {
+    "icon": {
+      "id": "soulless:blood_orb"
+    },
+    "title": {
+      "translate": "advancement.soulless.blood_feast.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.blood_feast.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gorge_on_blood": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "gorge_on_blood"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}
+

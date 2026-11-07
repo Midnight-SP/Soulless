@@ -51,23 +51,11 @@ public class RipPrimedTntEntity extends PrimedTnt {
     }
 
     private void awardDetonationAdvancement(ServerLevel serverLevel) {
-        if (this.detonatorUuid == null) {
-            return;
-        }
-
-        ServerPlayer player = serverLevel.getServer().getPlayerList().getPlayer(this.detonatorUuid);
-        if (player == null) {
-            return;
-        }
-
-        var advancement = player.server.getAdvancements().get(ResourceLocation.fromNamespaceAndPath("soulless", "the_ghostlands"));
-        if (advancement == null) {
-            return;
-        }
-
-        var progress = player.getAdvancements().getOrStartProgress(advancement);
-        for (String criterion : progress.getRemainingCriteria()) {
-            player.getAdvancements().award(advancement, criterion);
+        ServerPlayer player = this.detonatorUuid != null
+            ? serverLevel.getServer().getPlayerList().getPlayer(this.detonatorUuid)
+            : (serverLevel.getNearestPlayer(this, 32.0D) instanceof ServerPlayer sp ? sp : null);
+        if (player != null) {
+            SoullessMod.grantAdvancement(player, "the_ghostlands");
         }
     }
 

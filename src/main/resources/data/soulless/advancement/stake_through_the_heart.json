@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:wooden_stake"
+    },
+    "title": {
+      "translate": "advancement.soulless.stake_through_the_heart.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.stake_through_the_heart.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_vampire_with_stake": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "kill_vampire_with_stake"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}
+

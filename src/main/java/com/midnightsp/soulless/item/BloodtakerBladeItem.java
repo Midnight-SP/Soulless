@@ -32,7 +32,8 @@ public class BloodtakerBladeItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.getType().is(EntityTypeTags.UNDEAD)) {
+        boolean canHarvest = !target.getType().is(EntityTypeTags.UNDEAD) || SoullessMod.hasDraculasPendant(attacker);
+        if (canHarvest) {
             Level level = target.level();
             if (!level.isClientSide() && attacker instanceof Player player) {
                 for (int i = 0; i < 3; i++) {

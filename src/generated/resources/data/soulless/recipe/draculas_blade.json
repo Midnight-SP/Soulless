@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "soulless:blood_diamond"
+    },
+    "S": {
+      "item": "soulless:soulsteel_ingot"
+    }
+  },
+  "pattern": [
+    " D ",
+    " D ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:draculas_blade"
+  }
+}

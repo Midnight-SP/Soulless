@@ -63,6 +63,7 @@ public class ReturnTokenItem extends Item {
         );
         serverPlayer.getCooldowns().addCooldown(this, COOLDOWN_TICKS);
         serverPlayer.awardStat(Stats.ITEM_USED.get(this));
+        com.midnightsp.soulless.SoullessMod.grantAdvancement(serverPlayer, "ticket_home");
         targetLevel.playSound(null, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
 
         return InteractionResultHolder.success(itemStack);

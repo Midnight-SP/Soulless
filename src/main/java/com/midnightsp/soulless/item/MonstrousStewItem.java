@@ -25,6 +25,8 @@ public class MonstrousStewItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (!level.isClientSide()) {
             entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300, 0, false, true, true));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300, 1, false, true, true));
+            entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300, 0, false, true, true));
         }
 
         ItemStack consumed = super.finishUsingItem(stack, level, entity);

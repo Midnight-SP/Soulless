@@ -1,0 +1,16 @@
+{
+  "type": "soulless:ritual",
+  "catalyst": {
+    "item": "minecraft:potion"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:potion",
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "soulless:vampirism"
+      }
+    }
+  }
+}
+

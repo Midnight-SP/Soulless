@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
@@ -217,5 +218,113 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .define('H', SoullessMod.GHOST_HEART.get())
             .unlockedBy("has_ghost_heart", has(SoullessMod.GHOST_HEART.get()))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "undead_core"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, SoullessMod.BLOOD_DIAMOND_BLOCK.get())
+            .pattern("XXX")
+            .pattern("XXX")
+            .pattern("XXX")
+            .define('X', SoullessMod.BLOOD_DIAMOND.get())
+            .unlockedBy("has_blood_diamond", has(SoullessMod.BLOOD_DIAMOND.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "blood_diamond_block"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SoullessMod.BLOOD_DIAMOND.get(), 9)
+            .requires(SoullessMod.BLOOD_DIAMOND_BLOCK.get())
+            .unlockedBy("has_blood_diamond_block", has(SoullessMod.BLOOD_DIAMOND_BLOCK.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "blood_diamonds_from_blood_diamond_block"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.DRACULAS_BLADE.get())
+            .pattern(" D ")
+            .pattern(" D ")
+            .pattern(" S ")
+            .define('D', SoullessMod.BLOOD_DIAMOND.get())
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_blood_diamond", has(SoullessMod.BLOOD_DIAMOND.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "draculas_blade"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SoullessMod.GRAVEDIGGER.get())
+            .pattern(" S ")
+            .pattern(" A ")
+            .pattern(" A ")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .define('A', Items.STICK)
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "gravedigger"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SoullessMod.SOULBREAKER.get())
+            .pattern("SSS")
+            .pattern(" A ")
+            .pattern(" A ")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .define('A', Items.STICK)
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulbreaker"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.BEHEADER.get())
+            .pattern("SS ")
+            .pattern("SA ")
+            .pattern(" A ")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .define('A', Items.STICK)
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "beheader"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SoullessMod.INJECTION_NEEDLE.get())
+            .pattern("  I")
+            .pattern(" G ")
+            .pattern("S  ")
+            .define('I', Items.IRON_NUGGET)
+            .define('G', Items.GLASS_BOTTLE)
+            .define('S', Items.IRON_INGOT)
+            .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "injection_needle"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.SOULSTEEL_HELMET.get())
+            .pattern("SSS")
+            .pattern("S S")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_helmet"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.SOULSTEEL_CHESTPLATE.get())
+            .pattern("S S")
+            .pattern("SSS")
+            .pattern("SSS")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_chestplate"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.SOULSTEEL_LEGGINGS.get())
+            .pattern("SSS")
+            .pattern("S S")
+            .pattern("S S")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_leggings"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.SOULSTEEL_BOOTS.get())
+            .pattern("S S")
+            .pattern("S S")
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .unlockedBy("has_soulsteel_ingot", has(SoullessMod.SOULSTEEL_INGOT.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "soulsteel_boots"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SoullessMod.WOODEN_STAKE.get())
+            .pattern(" S")
+            .pattern("P ")
+            .define('S', Items.STICK)
+            .define('P', ItemTags.PLANKS)
+            .unlockedBy("has_stick", has(Items.STICK))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "wooden_stake"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SoullessMod.DRACULAS_PENDANT.get())
+            .pattern("DGD")
+            .pattern("SHS")
+            .pattern("DSD")
+            .define('D', SoullessMod.BLOOD_DIAMOND.get())
+            .define('G', SoullessMod.GOLD_SOULS.get())
+            .define('S', SoullessMod.SOULSTEEL_INGOT.get())
+            .define('H', SoullessMod.GHOST_HEART.get())
+            .unlockedBy("has_ghost_heart", has(SoullessMod.GHOST_HEART.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "draculas_pendant"));
     }
 }

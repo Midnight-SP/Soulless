@@ -1,0 +1,7 @@
+{
+  "parent": "soulless:item/draculas_bow",
+  "textures": {
+    "layer0": "soulless:item/draculas_bow_pulling_2"
+  }
+}
+

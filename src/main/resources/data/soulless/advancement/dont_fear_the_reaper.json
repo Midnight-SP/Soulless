@@ -1,5 +1,5 @@
 {
-  "parent": "soulless:soulless",
+  "parent": "soulless:soulsteel_ingot",
   "display": {
     "icon": {
       "id": "soulless:soul_reaper"

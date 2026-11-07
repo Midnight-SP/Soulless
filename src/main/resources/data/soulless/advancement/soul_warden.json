@@ -1,0 +1,85 @@
+{
+  "parent": "soulless:soulsteel_ingot",
+  "display": {
+    "icon": {
+      "id": "soulless:soulsteel_chestplate"
+    },
+    "title": {
+      "translate": "advancement.soulless.soul_warden.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.soul_warden.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulsteel_helmet"
+          }
+        ]
+      }
+    },
+    "has_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulsteel_chestplate"
+          }
+        ]
+      }
+    },
+    "has_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulsteel_leggings"
+          }
+        ]
+      }
+    },
+    "has_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulsteel_boots"
+          }
+        ]
+      }
+    },
+    "equip_full_armor": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "has_helmet",
+      "equip_full_armor"
+    ],
+    [
+      "has_chestplate",
+      "equip_full_armor"
+    ],
+    [
+      "has_leggings",
+      "equip_full_armor"
+    ],
+    [
+      "has_boots",
+      "equip_full_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  }
+}
+

@@ -29,6 +29,9 @@ public class GhostOrbItem extends Item {
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));
+        if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+            com.midnightsp.soulless.SoullessMod.grantAdvancement(serverPlayer, "the_orb_of_dreamers");
+        }
         if (!player.getAbilities().instabuild) {
             itemStack.shrink(1);
         }

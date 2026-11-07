@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:blood_orb"
+    },
+    "title": {
+      "translate": "advancement.soulless.draculas_curse.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.draculas_curse.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "become_vampire": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "become_vampire"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}
+

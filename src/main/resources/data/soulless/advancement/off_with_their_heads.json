@@ -1,0 +1,31 @@
+{
+  "parent": "soulless:soulsteel_ingot",
+  "display": {
+    "icon": {
+      "id": "soulless:beheader"
+    },
+    "title": {
+      "translate": "advancement.soulless.off_with_their_heads.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.off_with_their_heads.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "decapitate_enemy": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "decapitate_enemy"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

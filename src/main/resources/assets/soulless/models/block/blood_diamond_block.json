@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "soulless:block/blood_diamond_block"
+  }
+}
+

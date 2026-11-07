@@ -1,0 +1,39 @@
+{
+  "parent": "soulless:blinding_dust",
+  "display": {
+    "icon": {
+      "id": "soulless:soulsteel_ingot"
+    },
+    "title": {
+      "translate": "advancement.soulless.soulsteel_ingot.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.soulsteel_ingot.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_soulsteel_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:soulsteel_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soulsteel_ingot"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
+}
+

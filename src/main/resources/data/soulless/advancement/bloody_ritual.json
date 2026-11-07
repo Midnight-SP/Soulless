@@ -2,7 +2,7 @@
   "parent": "soulless:soulless",
   "display": {
     "icon": {
-      "id": "soulless:bloodtaker_blade"
+      "id": "soulless:ritual_blade"
     },
     "title": {
       "translate": "advancement.soulless.bloody_ritual.title"
@@ -10,29 +10,22 @@
     "description": {
       "translate": "advancement.soulless.bloody_ritual.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "has_bloodtaker_blade": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "soulless:bloodtaker_blade"
-          }
-        ]
-      }
+    "perform_ritual": {
+      "trigger": "minecraft:impossible"
     }
   },
   "requirements": [
     [
-      "has_bloodtaker_blade"
+      "perform_ritual"
     ]
   ],
   "rewards": {
-    "experience": 50
+    "experience": 30
   }
 }

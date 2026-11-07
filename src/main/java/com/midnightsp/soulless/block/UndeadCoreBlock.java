@@ -27,6 +27,14 @@ public class UndeadCoreBlock extends Block {
     }
 
     @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @javax.annotation.Nullable LivingEntity placer, net.minecraft.world.item.ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (!level.isClientSide() && placer instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+            com.midnightsp.soulless.SoullessMod.grantAdvancement(serverPlayer, "deathwish");
+        }
+    }
+
+    @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         super.onPlace(state, level, pos, oldState, movedByPiston);
         if (!level.isClientSide) {

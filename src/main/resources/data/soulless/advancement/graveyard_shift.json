@@ -1,0 +1,31 @@
+{
+  "parent": "soulless:soulsteel_ingot",
+  "display": {
+    "icon": {
+      "id": "soulless:gravedigger"
+    },
+    "title": {
+      "translate": "advancement.soulless.graveyard_shift.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.graveyard_shift.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "create_boneyard": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "create_boneyard"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
+}

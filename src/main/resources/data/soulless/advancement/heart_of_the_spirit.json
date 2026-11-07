@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:the_ghostlands",
+  "display": {
+    "icon": {
+      "id": "soulless:ghost_heart"
+    },
+    "title": {
+      "translate": "advancement.soulless.heart_of_the_spirit.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.heart_of_the_spirit.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_ghost_heart": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "use_ghost_heart"
+    ]
+  ],
+  "rewards": {
+    "experience": 40
+  }
+}
+

@@ -1,0 +1,11 @@
+{
+  "type": "soulless:ritual",
+  "catalyst": {
+    "item": "minecraft:bow"
+  },
+  "result": {
+    "count": 1,
+    "id": "soulless:draculas_bow"
+  }
+}
+

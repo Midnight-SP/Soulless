@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:soulpowder"
+    },
+    "title": {
+      "translate": "advancement.soulless.blinding_dust.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.blinding_dust.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_soulpowder": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "use_soulpowder"
+    ]
+  ],
+  "rewards": {
+    "experience": 25
+  }
+}
+

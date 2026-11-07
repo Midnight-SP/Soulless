@@ -1,0 +1,53 @@
+{
+  "parent": "soulless:bloody_ritual",
+  "display": {
+    "icon": {
+      "id": "soulless:blood_diamond"
+    },
+    "title": {
+      "translate": "advancement.soulless.heart_of_crimson.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.heart_of_crimson.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "transmuted": {
+      "trigger": "minecraft:impossible"
+    },
+    "has_blood_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:blood_diamond"
+          }
+        ]
+      }
+    },
+    "has_draculas_bow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:draculas_bow"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "transmuted",
+      "has_blood_diamond",
+      "has_draculas_bow"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

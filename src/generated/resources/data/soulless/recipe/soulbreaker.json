@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "soulless:soulsteel_ingot"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " A ",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:soulbreaker"
+  }
+}

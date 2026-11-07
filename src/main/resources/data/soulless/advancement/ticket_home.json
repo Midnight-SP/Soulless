@@ -1,5 +1,5 @@
 {
-  "parent": "soulless:soulless",
+  "parent": "soulless:off_with_their_heads",
   "display": {
     "icon": {
       "id": "soulless:return_token"
@@ -13,8 +13,7 @@
     "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false,
-    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+    "hidden": false
   },
   "criteria": {
     "use_return_token": {
@@ -25,5 +24,8 @@
     [
       "use_return_token"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
 }

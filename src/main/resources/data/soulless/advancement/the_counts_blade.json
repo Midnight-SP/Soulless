@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:lord_of_the_night",
+  "display": {
+    "icon": {
+      "id": "soulless:draculas_blade"
+    },
+    "title": {
+      "translate": "advancement.soulless.the_counts_blade.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.the_counts_blade.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "empower_blade": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "empower_blade"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}
+

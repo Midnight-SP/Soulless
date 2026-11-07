@@ -1,0 +1,11 @@
+{
+  "type": "soulless:ritual",
+  "catalyst": {
+    "item": "minecraft:diamond"
+  },
+  "result": {
+    "count": 1,
+    "id": "soulless:blood_diamond"
+  }
+}
+

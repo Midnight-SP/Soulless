@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "soulless:blood_diamond"
+    },
+    "G": {
+      "item": "soulless:gold_souls"
+    },
+    "H": {
+      "item": "soulless:ghost_heart"
+    },
+    "S": {
+      "item": "soulless:soulsteel_ingot"
+    }
+  },
+  "pattern": [
+    "DGD",
+    "SHS",
+    "DSD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "soulless:draculas_pendant"
+  }
+}

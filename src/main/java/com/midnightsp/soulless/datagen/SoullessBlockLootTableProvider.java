@@ -33,6 +33,7 @@ public class SoullessBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(SoullessMod.RIP.get());
         this.dropSelf(SoullessMod.SOULSTEEL_BLOCK.get());
         this.dropSelf(SoullessMod.UNDEAD_CORE.get());
+        this.dropSelf(SoullessMod.BLOOD_DIAMOND_BLOCK.get());
     }
 
     @Override
@@ -41,7 +42,8 @@ public class SoullessBlockLootTableProvider extends BlockLootSubProvider {
             SoullessMod.BONEYARD.get(),
             SoullessMod.RIP.get(),
             SoullessMod.SOULSTEEL_BLOCK.get(),
-            SoullessMod.UNDEAD_CORE.get()
+            SoullessMod.UNDEAD_CORE.get(),
+            SoullessMod.BLOOD_DIAMOND_BLOCK.get()
         );
     }
 }

@@ -1,0 +1,39 @@
+{
+  "parent": "soulless:the_ghostlands",
+  "display": {
+    "icon": {
+      "id": "soulless:draculas_pendant"
+    },
+    "title": {
+      "translate": "advancement.soulless.lord_of_the_night.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.lord_of_the_night.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_draculas_pendant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "soulless:draculas_pendant"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_draculas_pendant"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}
+

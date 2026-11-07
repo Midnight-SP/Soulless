@@ -1,5 +1,5 @@
 {
-  "parent": "soulless:soulless",
+  "parent": "soulless:soulsteel_ingot",
   "display": {
     "icon": {
       "id": "soulless:rip"
@@ -10,7 +10,7 @@
     "description": {
       "translate": "advancement.soulless.the_ghostlands.description"
     },
-    "frame": "task",
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
@@ -24,5 +24,8 @@
     [
       "detonate_rip"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
 }

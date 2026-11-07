@@ -23,6 +23,12 @@ public class FireballEntity extends LargeFireball {
         this.setPos(thrower.getX(), thrower.getEyeY() - 0.1, thrower.getZ());
     }
 
+    public FireballEntity(Level level, double x, double y, double z, Vec3 direction) {
+        super(SoullessEntities.FIREBALL.get(), level);
+        this.setPos(x, y, z);
+        this.setDeltaMovement(direction);
+    }
+
     @Override
     public void tick() {
         super.tick();
