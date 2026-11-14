@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Configurations de Soulless",
   "soulless.configuration.section.soulless.common.toml.title": "Configurations de Soulless",
   "soulless.configuration.items": "Liste des objets",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Eau bénite",
+  "entity.soulless.holy_water": "Eau bénite",
+  "tooltip.soulless.holy_water.line1": "Projette de l'eau consacrée dans une zone.",
+  "tooltip.soulless.holy_water.line2": "Dissipe les effets néfastes, purifie le vampirisme et châtie les morts-vivants.",
+  "message.soulless.purified_vampirism": "Vous avez été purifié de la malédiction du vampirisme !",
+  "message.soulless.holy_water_repelled": "L'eau bénite brûle votre chair, mais le Pendentif de Dracula protège votre âme immortelle !",
+  "message.soulless.vampire_whisper": "§4[Présence Sombre]§r §cVous commencez à ressentir une soif de sang. Désormais, vous déroberez la force vitale des créatures vivantes. Le seul remède à cette malédiction est la mort ou l'eau bénite. Si vous souhaitez conserver votre malédiction, vous aurez besoin du Pendentif de Dracula ; vous resterez alors un vampire jusqu'à ce que vous le retiriez ou qu'un pieu transperce votre cœur. Méfiez-vous de ceux à qui vous montrez ce pouvoir, car certains voudront vous l'arracher. Êtes-vous réellement un monstre ?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Présence Sombre]§r §cVous sentez la soif de sang revenir... Peut-être que cette fois vous ne la perdrez pas...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Présence Sombre]§r §cVous sentez votre pouvoir s'évanouir comme s'il n'était qu'un rêve... Vous n'avez vraiment pas pu le garder plus longtemps ?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Présence Sombre]§r §cIl faudra bien plus que cela pour vous arracher ce pouvoir... Faites-leur vivre un enfer !§r",
+  "advancement.soulless.bless_be_the_damned.title": "Bénis soient les damnés",
+  "advancement.soulless.bless_be_the_damned.description": "Guéris un vampire à l'aide d'eau bénite."
 }

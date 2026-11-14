@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.TntRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -30,5 +32,21 @@ public class SoullessModClient {
         EntityRenderers.register(SoullessEntities.GHOST_ORB.get(), context -> new ThrownItemRenderer(context, 1.0F, true));
         EntityRenderers.register(SoullessEntities.FIREBALL.get(), context -> new ThrownItemRenderer(context, 1.0F, true));
         EntityRenderers.register(SoullessEntities.RIP_PRIMED.get(), TntRenderer::new);
+        EntityRenderers.register(SoullessEntities.HOLY_WATER.get(), ThrownItemRenderer::new);
+
+        event.enqueueWork(() -> {
+            ItemProperties.register(SoullessMod.DRACULAS_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (stack, level, entity, seed) -> {
+                if (entity == null) {
+                    return 0.0F;
+                } else {
+                    return entity.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
+                }
+            });
+            ItemProperties.register(
+                SoullessMod.DRACULAS_BOW.get(),
+                ResourceLocation.withDefaultNamespace("pulling"),
+                (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+            );
+        });
     }
 }

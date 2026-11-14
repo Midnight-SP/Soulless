@@ -1,0 +1,32 @@
+{
+  "parent": "soulless:soulless",
+  "display": {
+    "icon": {
+      "id": "soulless:holy_water"
+    },
+    "title": {
+      "translate": "advancement.soulless.bless_be_the_damned.title"
+    },
+    "description": {
+      "translate": "advancement.soulless.bless_be_the_damned.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cure_vampirism": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "cure_vampirism"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}
+

@@ -36,4 +36,12 @@ public class SoullessEntities {
             .updateInterval(10)
             .build("soulless:rip_primed")
     );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<HolyWaterEntity>> HOLY_WATER = ENTITY_TYPES.register("holy_water", () ->
+        EntityType.Builder.<HolyWaterEntity>of(HolyWaterEntity::new, MobCategory.MISC)
+            .sized(0.25F, 0.25F)
+            .clientTrackingRange(4)
+            .updateInterval(10)
+            .build("soulless:holy_water")
+    );
 }

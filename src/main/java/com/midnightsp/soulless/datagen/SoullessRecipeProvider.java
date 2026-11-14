@@ -316,6 +316,12 @@ public class SoullessRecipeProvider extends RecipeProvider implements ICondition
             .unlockedBy("has_stick", has(Items.STICK))
             .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "wooden_stake"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BREWING, SoullessMod.HOLY_WATER.get())
+            .requires(Items.GLASS_BOTTLE)
+            .requires(SoullessMod.GOLD_SOULS.get())
+            .unlockedBy("has_gold_souls", has(SoullessMod.GOLD_SOULS.get()))
+            .save(recipeOutput, ResourceLocation.fromNamespaceAndPath(SoullessMod.MODID, "holy_water"));
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SoullessMod.DRACULAS_PENDANT.get())
             .pattern("DGD")
             .pattern("SHS")

@@ -59,11 +59,9 @@ public class BloodOrbItem extends Item {
                     }
 
                     if (consumed == 32) {
-                        player.displayClientMessage(
-                            Component.translatable("message.soulless.vampirism_awakened").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD),
-                            true
-                        );
+                        player.getPersistentData().putBoolean("SoullessAwakeningLoreHandled", true);
                         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SPAWN, SoundSource.PLAYERS, 0.7F, 0.6F);
+                        SoullessMod.sendVampireAwakeningLore(player);
                     }
                 }
             }

@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Soulless 설정",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless 설정",
   "soulless.configuration.items": "아이템 목록",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "성수",
+  "entity.soulless.holy_water": "성수",
+  "tooltip.soulless.holy_water.line1": "주변 지역에 축성된 물을 뿌립니다.",
+  "tooltip.soulless.holy_water.line2": "해로운 효과를 정화하고, 흡혈귀 저주를 치유하며, 언데드를 응징합니다.",
+  "message.soulless.purified_vampirism": "흡혈귀의 저주에서 정화되었습니다!",
+  "message.soulless.holy_water_repelled": "성수가 살을 태우지만, 드라큘라의 펜던트가 불멸의 영혼을 보호합니다!",
+  "message.soulless.vampire_whisper": "§4[어둠의 존재]§r §c피를 향한 갈증을 느끼기 시작했다. 이제부터 너는 살아있는 생명체로부터 생명력을 빼앗게 될 것이다. 이 저주의 유일한 치료법은 죽음이나 성수뿐이다. 저주를 유지하고 싶다면 드라큘라의 펜던트가 필요할 것이며, 그것을 벗거나 말뚝이 심장을 꿰뚫기 전까지는 흡혈귀로 남아있을 것이다. 이 힘을 누구에게 드러낼지 조심하라. 그것을 빼앗으려는 자들이 나타날 테니. 너는 정말 괴물인 것인가?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[어둠의 존재]§r §c피를 향한 갈증이 다시 돌아오는 것이 느껴진다... 이번에는 잃지 않을 수 있을까...§r",
+  "message.soulless.vampire_whisper_cured": "§4[어둠의 존재]§r §c마치 꿈이었던 것처럼 너의 힘이 사라져 가는 것이 느껴진다... 정녕 더 오래 유지할 수는 없었던 건가?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[어둠의 존재]§r §c너의 힘을 빼앗으려면 그 정도로 어림도 없다... 그들에게 지옥을 보여주어라!§r",
+  "advancement.soulless.bless_be_the_damned.title": "저주받은 자들에게 축복을",
+  "advancement.soulless.bless_be_the_damned.description": "성수를 사용하여 흡혈귀를 치유하십시오."
 }

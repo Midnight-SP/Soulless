@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Configurazione di Soulless",
   "soulless.configuration.section.soulless.common.toml.title": "Configurazione di Soulless",
   "soulless.configuration.items": "Lista oggetti",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Acqua santa",
+  "entity.soulless.holy_water": "Acqua santa",
+  "tooltip.soulless.holy_water.line1": "Spruzza acqua consacrata in un'area.",
+  "tooltip.soulless.holy_water.line2": "Rimuove gli effetti nocivi, purifica dal vampirismo e punisce i non morti.",
+  "message.soulless.purified_vampirism": "Sei stato purificato dalla maledizione del vampirismo!",
+  "message.soulless.holy_water_repelled": "L'acqua santa brucia la tua carne, ma il Pendente di Dracula protegge la tua anima immortale!",
+  "message.soulless.vampire_whisper": "§4[Presenza Oscura]§r §cHai iniziato a sentire una sete di sangue. D'ora in poi ruberai la forza vitale delle creature viventi. L'unica cura per questa maledizione è la morte o l'acqua santa. Se vuoi mantenere la tua maledizione avrai bisogno del Pendente di Dracula: rimarrai un vampiro finché non lo rimuoverai o un paletto trafiggerà il tuo cuore. Fai attenzione a chi mostri questo potere, poiché ci sarà chi vorrà strappartelo via. Sei davvero un mostro?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Presenza Oscura]§r §cSenti la sete di sangue ritornare... Forse questa volta non la perderai...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Presenza Oscura]§r §cSenti il tuo potere svanire come se fosse stato solo un sogno... Davvero non sei riuscito a trattenerlo più a lungo?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Presenza Oscura]§r §cCi vorrà ben altro per portarti via il potere... Scatena l'inferno!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Benedetti i dannati",
+  "advancement.soulless.bless_be_the_damned.description": "Cura un vampiro usando l'acqua santa."
 }

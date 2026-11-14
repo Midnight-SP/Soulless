@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Soulless 設定",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless 設定",
   "soulless.configuration.items": "アイテム一覧",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "聖水",
+  "entity.soulless.holy_water": "聖水",
+  "tooltip.soulless.holy_water.line1": "周囲に聖水を撒き散らす。",
+  "tooltip.soulless.holy_water.line2": "有害な効果を解除し、吸血鬼の呪いを浄化し、アンデッドを討伐する。",
+  "message.soulless.purified_vampirism": "吸血鬼の呪いから浄化されました！",
+  "message.soulless.holy_water_repelled": "聖水が肉体を焼くが、ドラキュラのペンダントが不死の魂を守っている！",
+  "message.soulless.vampire_whisper": "§4[闇の気配]§r §c汝は血への渇きを覚え始めた。これより先、汝は生ける者たちから生命力を奪うこととなる。この呪いを解く唯一の術は、死か、さもなくば聖水のみ。呪いを維持したくばドラキュラのペンダントを求めよ。それを外すか、あるいは胸に杭が突き刺さらぬ限り、汝は吸血鬼であり続けるだろう。この力を誰に見せるかは慎重になれ、それを奪い取ろうとする者たちが必ず現れる。汝は、本当に怪物なのだろうか？§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[闇の気配]§r §c血への渇きが蘇るのを感じる……今度こそ、それを失わずにいられるか……§r",
+  "message.soulless.vampire_whisper_cured": "§4[闇の気配]§r §c力が夢のように消え去っていくのを感じる……これ以上、力を保つことすら適わなかったのか？§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[闇の気配]§r §c汝の力を奪うには、その程度では足りぬ……奴らに地獄を見せてやれ！§r",
+  "advancement.soulless.bless_be_the_damned.title": "呪われし者に祝福を",
+  "advancement.soulless.bless_be_the_damned.description": "聖水を使って吸血鬼を治療する。"
 }

@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    "soulless:soul_reaper",
+    "soulless:ritual_blade",
+    "soulless:bloodtaker_blade",
+    "soulless:bat",
     "soulless:draculas_blade",
     "soulless:wooden_stake"
   ]

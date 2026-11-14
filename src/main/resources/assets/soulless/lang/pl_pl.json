@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Soulless Configs",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless Configs",
   "soulless.configuration.items": "Lista przedmiotów",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Woda święcona",
+  "entity.soulless.holy_water": "Woda święcona",
+  "tooltip.soulless.holy_water.line1": "Rozbryzguje poświęconą wodę na danym obszarze.",
+  "tooltip.soulless.holy_water.line2": "Leczy szkodliwe efekty, oczyszcza z wampiryzmu i razi nieumarłych.",
+  "message.soulless.purified_vampirism": "Klątwa wampiryzmu została z ciebie oczyszczona!",
+  "message.soulless.holy_water_repelled": "Woda święcona parzy twoje ciało, lecz Wisior Drakuli chroni twoją nieśmiertelną duszę!",
+  "message.soulless.vampire_whisper": "§4[Mroczna Obecność]§r §cZaczynasz odczuwać pragnienie krwi. Od teraz będziesz wykradać siłę życiową z żywych istot. Jedynym lekarstwem na tę klątwę jest śmierć lub woda święcona. Jeśli chcesz zachować swoją klątwę, będziesz potrzebować Wisiora Drakuli — wtedy pozostaniesz wampirem, dopóki go nie zdejmiesz lub kołek nie przebije twojego serca. Uważaj, komu ujawniasz tę moc, gdyż znajdą się tacy, którzy zechcą ci ją odebrać. Czy naprawdę jesteś potworem?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Mroczna Obecność]§r §cCzujesz, jak pragnienie krwi powraca... Może tym razem go nie utracisz...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Mroczna Obecność]§r §cCzujesz, jak twoja moc zanika, jakby była tylko snem... Naprawdę nie mogłeś utrzymać jej dłużej?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Mroczna Obecność]§r §cTrzeba czegoś więcej, by odebrać twoją moc... Pokaż im piekło!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Błogosławieni potępieni",
+  "advancement.soulless.bless_be_the_damned.description": "Ulecz wampira za pomocą wody święconej."
 }

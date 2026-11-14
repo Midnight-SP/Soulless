@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Soulless-Konfiguration",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless-Konfiguration",
   "soulless.configuration.items": "Objektliste",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Weihwasser",
+  "entity.soulless.holy_water": "Weihwasser",
+  "tooltip.soulless.holy_water.line1": "Verspritzt geweihtes Wasser in einem Bereich.",
+  "tooltip.soulless.holy_water.line2": "Reinigt schädliche Effekte, heilt Vampirismus und zerschmettert Untote.",
+  "message.soulless.purified_vampirism": "Du wurdest vom Fluch des Vampirismus gereinigt!",
+  "message.soulless.holy_water_repelled": "Das Weihwasser verbrennt dein Fleisch, doch Draculas Amulett schützt deine unsterbliche Seele!",
+  "message.soulless.vampire_whisper": "§4[Dunkle Präsenz]§r §cDu hast begonnen, einen Durst nach Blut zu spüren. Von nun an wirst du lebenden Kreaturen die Lebenskraft rauben. Die einzige Heilung für diesen Fluch ist der Tod oder Weihwasser. Wenn du deinen Fluch behalten willst, brauchst du Draculas Amulett; dann bleibst du ein Vampir, bis du es ablegst oder ein Pflock dein Herz durchbohrt. Sei vorsichtig, wem du diese Macht zeigst, denn es wird jene geben, die sie dir entreißen wollen. Bist du wirklich ein Monster?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Dunkle Präsenz]§r §cDu spürst, wie der Durst nach Blut zurückkehrt... Vielleicht verlierst du ihn dieses Mal nicht...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Dunkle Präsenz]§r §cDu spürst, wie deine Kraft schwindet, als wäre sie nur ein Traum gewesen... Konntest du sie wirklich nicht länger bewahren?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Dunkle Präsenz]§r §cEs braucht mehr als das, um dir deine Macht zu rauben... Zeig ihnen die Hölle!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Gesegnet seien die Verdammten",
+  "advancement.soulless.bless_be_the_damned.description": "Heile einen Vampir mit Weihwasser."
 }

@@ -26,12 +26,14 @@ import com.midnightsp.soulless.item.BeheaderItem;
 import com.midnightsp.soulless.item.InjectionNeedleItem;
 import com.midnightsp.soulless.item.DraculasPendantItem;
 import com.midnightsp.soulless.item.WoodenStakeItem;
+import com.midnightsp.soulless.item.HolyWaterItem;
 import com.midnightsp.soulless.item.SoulpowderItem;
 import com.midnightsp.soulless.recipe.RitualRecipe;
 import com.midnightsp.soulless.worldgen.SoullessWorldgen;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
@@ -54,11 +56,17 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Ghast;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.entity.monster.Witch;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.tags.EntityTypeTags;
@@ -85,6 +93,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
@@ -92,12 +101,16 @@ import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import org.joml.Vector3f;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -220,6 +233,9 @@ public class SoullessMod {
     public static final DeferredItem<Item> WOODEN_STAKE = ITEMS.register("wooden_stake", () ->
         new WoodenStakeItem(new Item.Properties())
     );
+    public static final DeferredItem<Item> HOLY_WATER = ITEMS.register("holy_water", () ->
+        new HolyWaterItem(new Item.Properties().stacksTo(16))
+    );
 
     // Soulsteel Armor
     public static final DeferredItem<ArmorItem> SOULSTEEL_HELMET = ITEMS.register("soulsteel_helmet", () ->
@@ -272,6 +288,7 @@ public class SoullessMod {
                 output.accept(INJECTION_NEEDLE.get());
                 output.accept(DRACULAS_PENDANT.get());
                 output.accept(WOODEN_STAKE.get());
+                output.accept(HOLY_WATER.get());
                 output.accept(SOULSTEEL_HELMET.get());
                 output.accept(SOULSTEEL_CHESTPLATE.get());
                 output.accept(SOULSTEEL_LEGGINGS.get());
@@ -609,6 +626,17 @@ public class SoullessMod {
             return;
         }
 
+        // Naturally spawning vampire mobs: only living monsters with blood (Spiders, Illagers, Witches) can contract vampirism
+        if (event.getEntity() instanceof Monster monster && !monster.getType().is(EntityTypeTags.UNDEAD)) {
+            if (monster instanceof Spider || monster instanceof AbstractIllager || monster instanceof Witch) {
+                var random = monster.getRandom();
+                if (random.nextFloat() < 0.02F) {
+                    monster.addEffect(new MobEffectInstance(VAMPIRISM_EFFECT, MobEffectInstance.INFINITE_DURATION, 0, false, true, true));
+                    monster.addTag("soulless:vampire_mob");
+                }
+            }
+        }
+
         if (event.getEntity() instanceof Skeleton || event.getEntity() instanceof Zombie) {
             var random = event.getEntity().getRandom();
             if (random.nextFloat() < 0.02F) { // 2% chance to spawn with soulsteel gear
@@ -700,23 +728,17 @@ public class SoullessMod {
             if (pendantCount > 0) {
                 if (killedByStake) {
                     removeOneDraculasPendant(victimPlayer);
-                    pendantCount--;
-                    victimPlayer.getPersistentData().putInt("SoullessKeptPendants", pendantCount);
+                    victimPlayer.getPersistentData().remove("SoullessKeptPendants");
                     victimPlayer.getPersistentData().remove("SoullessKeptBlades");
                     victimPlayer.getPersistentData().remove("SoullessKeptBows");
+                    victimPlayer.getPersistentData().remove("SoullessContractedVampirism");
+                    victimPlayer.getPersistentData().remove("SoullessBloodConsumed");
                     victimPlayer.level().playSound(null, victimPlayer.getX(), victimPlayer.getY(), victimPlayer.getZ(),
                         SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 1.5F, 0.8F);
-                    victimPlayer.displayClientMessage(
-                        Component.translatable("message.soulless.pendant_shattered").withStyle(ChatFormatting.RED, ChatFormatting.BOLD),
-                        true
-                    );
                     if (event.getSource().getEntity() instanceof ServerPlayer killerPlayer) {
                         grantAdvancement(killerPlayer, "stake_through_the_heart");
-                        killerPlayer.displayClientMessage(
-                            Component.translatable("message.soulless.pendant_shattered_killer").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD),
-                            true
-                        );
                     }
+                    sendVampireCuredLore(victimPlayer);
                 } else {
                     victimPlayer.getPersistentData().putInt("SoullessKeptPendants", pendantCount);
                     int bladeCount = countItem(victimPlayer, DRACULAS_BLADE.get());
@@ -728,6 +750,13 @@ public class SoullessMod {
                 victimPlayer.getPersistentData().remove("SoullessKeptPendants");
                 victimPlayer.getPersistentData().remove("SoullessKeptBlades");
                 victimPlayer.getPersistentData().remove("SoullessKeptBows");
+                if (killedByStake) {
+                    victimPlayer.getPersistentData().remove("SoullessContractedVampirism");
+                }
+                if (victimPlayer.hasEffect(VAMPIRISM_EFFECT) && !victimPlayer.getPersistentData().getBoolean("SoullessContractedVampirism")) {
+                    victimPlayer.getPersistentData().remove("SoullessBloodConsumed");
+                    sendVampireCuredLore(victimPlayer);
+                }
             }
         }
     }
@@ -738,6 +767,9 @@ public class SoullessMod {
             event.getEntity().getPersistentData().remove("SoullessBloodConsumed");
             if (event.getOriginal().getPersistentData().getBoolean("SoullessContractedVampirism")) {
                 event.getEntity().getPersistentData().putBoolean("SoullessContractedVampirism", true);
+            }
+            if (event.getOriginal().getPersistentData().getBoolean("SoullessReceivedVampireLore")) {
+                event.getEntity().getPersistentData().putBoolean("SoullessReceivedVampireLore", true);
             }
             int keptPendants = event.getOriginal().getPersistentData().getInt("SoullessKeptPendants");
             if (keptPendants > 0) {
@@ -752,6 +784,9 @@ public class SoullessMod {
             }
             if (originalTag.getBoolean("SoullessContractedVampirism")) {
                 event.getEntity().getPersistentData().putBoolean("SoullessContractedVampirism", true);
+            }
+            if (originalTag.getBoolean("SoullessReceivedVampireLore")) {
+                event.getEntity().getPersistentData().putBoolean("SoullessReceivedVampireLore", true);
             }
             int keptPendants = originalTag.getInt("SoullessKeptPendants");
             if (keptPendants > 0) {
@@ -789,15 +824,64 @@ public class SoullessMod {
 
             if (player.getPersistentData().getBoolean("SoullessContractedVampirism")) {
                 player.getPersistentData().remove("SoullessContractedVampirism");
+                player.getPersistentData().putBoolean("SoullessAwakeningLoreHandled", true);
                 player.addEffect(new MobEffectInstance(VAMPIRISM_EFFECT, MobEffectInstance.INFINITE_DURATION, 0, false, false, true));
-                player.displayClientMessage(
-                    Component.translatable("message.soulless.vampirism_infected").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD),
-                    true
-                );
                 if (player instanceof ServerPlayer serverPlayer) {
                     grantAdvancement(serverPlayer, "draculas_curse");
                 }
                 player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SPAWN, SoundSource.PLAYERS, 0.7F, 0.5F);
+                sendVampireAwakeningLore(player);
+            }
+        }
+    }
+
+    public static void sendVampireAwakeningLore(Player player) {
+        if (player.level().isClientSide()) {
+            return;
+        }
+        CompoundTag data = player.getPersistentData();
+        if (!data.getBoolean("SoullessReceivedVampireLore")) {
+            data.putBoolean("SoullessReceivedVampireLore", true);
+
+            player.sendSystemMessage(Component.literal(""));
+            player.sendSystemMessage(Component.translatable("message.soulless.vampire_whisper"));
+            player.sendSystemMessage(Component.literal(""));
+        } else {
+            player.sendSystemMessage(Component.literal(""));
+            player.sendSystemMessage(Component.translatable("message.soulless.vampire_whisper_reawakened"));
+            player.sendSystemMessage(Component.literal(""));
+        }
+    }
+
+    public static void sendVampireCuredLore(Player player) {
+        if (player.level().isClientSide()) {
+            return;
+        }
+        player.sendSystemMessage(Component.literal(""));
+        player.sendSystemMessage(Component.translatable("message.soulless.vampire_whisper_cured"));
+        player.sendSystemMessage(Component.literal(""));
+    }
+
+    public static void sendVampirePendantProtectedLore(Player player) {
+        if (player.level().isClientSide()) {
+            return;
+        }
+        player.sendSystemMessage(Component.literal(""));
+        player.sendSystemMessage(Component.translatable("message.soulless.vampire_whisper_pendant_protected"));
+        player.sendSystemMessage(Component.literal(""));
+    }
+
+    @SubscribeEvent
+    public void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
+        if (event.getItem().is(Items.MILK_BUCKET) && event.getEntity() instanceof Player player) {
+            if (player.hasEffect(VAMPIRISM_EFFECT)) {
+                if (hasDraculasPendant(player)) {
+                    sendVampirePendantProtectedLore(player);
+                } else {
+                    player.getPersistentData().remove("SoullessBloodConsumed");
+                    player.getPersistentData().remove("SoullessContractedVampirism");
+                    sendVampireCuredLore(player);
+                }
             }
         }
     }
@@ -821,6 +905,26 @@ public class SoullessMod {
     public void onEffectAdded(net.neoforged.neoforge.event.entity.living.MobEffectEvent.Added event) {
         if (event.getEntity() instanceof ServerPlayer player && event.getEffectInstance().getEffect().is(VAMPIRISM_EFFECT)) {
             grantAdvancement(player, "draculas_curse");
+            if (event.getOldEffectInstance() == null) {
+                if (player.getPersistentData().getBoolean("SoullessAwakeningLoreHandled")) {
+                    player.getPersistentData().remove("SoullessAwakeningLoreHandled");
+                } else if (!hasDraculasPendant(player)) {
+                    sendVampireAwakeningLore(player);
+                } else if (!player.getPersistentData().getBoolean("SoullessReceivedVampireLore")) {
+                    sendVampireAwakeningLore(player);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onEffectExpired(net.neoforged.neoforge.event.entity.living.MobEffectEvent.Expired event) {
+        if (event.getEntity() instanceof ServerPlayer player && event.getEffectInstance().getEffect().is(VAMPIRISM_EFFECT)) {
+            if (!hasDraculasPendant(player) && player.getPersistentData().getInt("SoullessBloodConsumed") < 32) {
+                player.getPersistentData().remove("SoullessBloodConsumed");
+                player.getPersistentData().remove("SoullessContractedVampirism");
+                sendVampireCuredLore(player);
+            }
         }
     }
 
@@ -942,10 +1046,60 @@ public class SoullessMod {
             return;
         }
 
+        if (event.getItemStack().is(HOLY_WATER.get())) {
+            event.getToolTip().add(Component.translatable("tooltip.soulless.holy_water.line1").withStyle(ChatFormatting.AQUA));
+            event.getToolTip().add(Component.translatable("tooltip.soulless.holy_water.line2").withStyle(ChatFormatting.GRAY));
+            return;
+        }
+
         if (event.getItemStack().is(SOULSTEEL_HELMET.get()) || event.getItemStack().is(SOULSTEEL_CHESTPLATE.get()) ||
             event.getItemStack().is(SOULSTEEL_LEGGINGS.get()) || event.getItemStack().is(SOULSTEEL_BOOTS.get())) {
             event.getToolTip().add(Component.translatable("tooltip.soulless.soulsteel_armor.line2").withStyle(ChatFormatting.DARK_AQUA));
             return;
+        }
+    }
+
+    @SubscribeEvent
+    public void onEntityTick(EntityTickEvent.Post event) {
+        if (event.getEntity() instanceof LivingEntity living && !living.level().isClientSide()) {
+            if (living.getTags().contains("soulless:vampire_mob") && living.tickCount % 10 == 0) {
+                if (living.level() instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(
+                        new DustParticleOptions(new Vector3f(0.85F, 0.05F, 0.05F), 0.8F),
+                        living.getX() + (living.getRandom().nextDouble() - 0.5) * 0.4,
+                        living.getEyeY() + (living.getRandom().nextDouble() - 0.5) * 0.2,
+                        living.getZ() + (living.getRandom().nextDouble() - 0.5) * 0.4,
+                        1,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    );
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onVillagerTrades(VillagerTradesEvent event) {
+        if (event.getType() == VillagerProfession.CLERIC) {
+            // Tier 2 (Apprentice): 1 Emerald -> 1 Wooden Stake
+            var tier2 = event.getTrades().get(2);
+            if (tier2 != null) {
+                tier2.add(new BasicItemListing(1, new ItemStack(WOODEN_STAKE.get()), 12, 2, 0.05F));
+            }
+
+            // Tier 3 (Journeyman): 1 Emerald + 1 Glass Bottle -> 2 Holy Water
+            var tier3 = event.getTrades().get(3);
+            if (tier3 != null) {
+                tier3.add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.GLASS_BOTTLE, 1), new ItemStack(HOLY_WATER.get(), 2), 12, 4, 0.05F));
+            }
+
+            // Tier 4 (Expert): 1 Emerald -> 1 Injection Needle
+            var tier4 = event.getTrades().get(4);
+            if (tier4 != null) {
+                tier4.add(new BasicItemListing(1, new ItemStack(INJECTION_NEEDLE.get()), 8, 6, 0.05F));
+            }
         }
     }
 }

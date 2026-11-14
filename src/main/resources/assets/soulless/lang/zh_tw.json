@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Soulless 設定",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless 設定",
   "soulless.configuration.items": "物品列表",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "聖水",
+  "entity.soulless.holy_water": "聖水",
+  "tooltip.soulless.holy_water.line1": "在區域內潑灑聖水。",
+  "tooltip.soulless.holy_water.line2": "清除負面效果，淨化吸血鬼詛咒，並懲戒亡靈。",
+  "message.soulless.purified_vampirism": "你已被淨化，擺脫了吸血鬼詛咒！",
+  "message.soulless.holy_water_repelled": "聖水灼燒著你的血肉，但德古拉吊墜守護著你的不朽靈魂！",
+  "message.soulless.vampire_whisper": "§4[黑暗存在]§r §c你開始感到對鮮血的渴望。從現在起，你將從活物身上竊取生命力。此詛咒唯一的解法唯有死亡或聖水。若想保留你的詛咒，你需要德古拉吊墜，屆時你將一直保持吸血鬼之身，直至你將其取下或木樁刺穿你的心臟。謹慎展現這股力量，必有人企圖將它奪走。你真的已經成為怪物了嗎？§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[黑暗存在]§r §c你感到對鮮血的渴求再度湧現……也許這一次你不會再失去它……§r",
+  "message.soulless.vampire_whisper_cured": "§4[黑暗存在]§r §c你感到你的力量正在消逝，彷彿那只是一場夢……你當真連片刻都無法保留它嗎？§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[黑暗存在]§r §c要想奪走你的力量，僅憑這點把戲可遠遠不夠……讓他們見識地獄吧！§r",
+  "advancement.soulless.bless_be_the_damned.title": "福澤受咒者",
+  "advancement.soulless.bless_be_the_damned.description": "使用聖水治癒吸血鬼。"
 }

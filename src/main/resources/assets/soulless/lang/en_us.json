@@ -28,19 +28,16 @@
   "item.soulless.return_token": "Return Token",
   "item.soulless.ritual_blade": "Ritual Blade",
   "item.soulless.bloodtaker_blade": "Bloodtaker Blade",
-
   "block.soulless.undead_core": "Undead Core",
   "block.soulless.boneyard": "Boneyard",
   "block.soulless.rip": "RIP",
   "block.soulless.soulsteel_block": "Soulsteel Block",
   "block.soulless.blood_diamond_block": "Block of Blood Diamond",
-
   "effect.soulless.vampirism": "Vampirism",
   "item.minecraft.potion.effect.vampirism": "Potion of Vampirism",
   "item.minecraft.splash_potion.effect.vampirism": "Splash Potion of Vampirism",
   "item.minecraft.lingering_potion.effect.vampirism": "Lingering Potion of Vampirism",
   "item.minecraft.tipped_arrow.effect.vampirism": "Arrow of Vampirism",
-
   "advancement.soulless.soulless.title": "Soulless",
   "advancement.soulless.soulless.description": "Harvest a Lost Soul from a fallen undead.",
   "advancement.soulless.blinding_dust.title": "Pocket Sand",
@@ -83,7 +80,6 @@
   "advancement.soulless.home_run.description": "Deflect a projectile or hit a Ghast with a Baseball Bat.",
   "advancement.soulless.the_orb_of_dreamers.title": "The Orb of Dreamers",
   "advancement.soulless.the_orb_of_dreamers.description": "Hurl a Ghost Orb.",
-
   "tooltip.soulless.undead_core.line1": "Pulses every 2 seconds in a 50-block radius.",
   "tooltip.soulless.undead_core.line2": "Undead are harmed, weakened, and slowed.",
   "tooltip.soulless.return_token.line1": "Return to your spawn point without dying.",
@@ -110,15 +106,25 @@
   "tooltip.soulless.monstrous_stew.line1": "Grants Strength II & Resistance I for 15s at the cost of Nausea.",
   "tooltip.soulless.injection_needle.line2": "[Right Click] to perform a blood ritual. Transmutes off-hand catalysts.",
   "tooltip.soulless.soulsteel_armor.line2": "+15% resistance to damage dealt by undead per piece.",
-
   "message.soulless.vampirism_awakened": "A dark vampiric thirst has awakened within you!",
   "message.soulless.vampirism_infected": "The vampire's curse takes hold... You awaken as a creature of the night!",
   "message.soulless.pendant_shattered": "Your Dracula's Pendant was pierced by a wooden stake and shattered!",
   "message.soulless.pendant_shattered_killer": "You pierced their heart with a wooden stake, shattering Dracula's Pendant!",
-
   "soulless.configuration.title": "Soulless Configs",
   "soulless.configuration.section.soulless.common.toml": "Soulless Configs",
   "soulless.configuration.section.soulless.common.toml.title": "Soulless Configs",
   "soulless.configuration.items": "Item List",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Holy Water",
+  "entity.soulless.holy_water": "Holy Water",
+  "tooltip.soulless.holy_water.line1": "Splashes consecrated water in an area.",
+  "tooltip.soulless.holy_water.line2": "Cleanses harmful effects, purifies vampirism, and smites the undead.",
+  "message.soulless.purified_vampirism": "You have been purified of the Vampiric Curse!",
+  "message.soulless.holy_water_repelled": "The Holy Water sears your flesh, but Dracula's Pendant protects your immortal soul!",
+  "message.soulless.vampire_whisper": "§4[Dark Presence]§r §cYou have begun to feel a thirst for blood. From now on you will steal life force from living creatures. The only cure for this curse is death or holy water. If you want to keep your curse you will need Dracula's Pendant, then you will stay a vampire until you remove it or a stake pierces your heart. Be careful who you show this power to as there will be people who would want to take it away from you. Are you really a monster?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Dark Presence]§r §cYou feel the thirst of blood coming back... Maybe this time you won't lose it...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Dark Presence]§r §cYou feel your power fading away as if it was only a dream... You really couldn't keep it for any longer?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Dark Presence]§r §cIt will take more than that to take away your power... Give them hell!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Bless be the Damned",
+  "advancement.soulless.bless_be_the_damned.description": "Cure a vampire using Holy Water."
 }

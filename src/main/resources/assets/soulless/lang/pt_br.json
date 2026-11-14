@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Configurações do Soulless",
   "soulless.configuration.section.soulless.common.toml.title": "Configurações do Soulless",
   "soulless.configuration.items": "Lista de Itens",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Água Benta",
+  "entity.soulless.holy_water": "Água Benta",
+  "tooltip.soulless.holy_water.line1": "Espalha água consagrada em uma área.",
+  "tooltip.soulless.holy_water.line2": "Remove efeitos nocivos, purifica o vampirismo e pune os mortos-vivos.",
+  "message.soulless.purified_vampirism": "Você foi purificado da maldição do vampirismo!",
+  "message.soulless.holy_water_repelled": "A água benta queima sua carne, mas o Pingente do Drácula protege sua alma imortal!",
+  "message.soulless.vampire_whisper": "§4[Presença Sombria]§r §cVocê começou a sentir sede de sangue. A partir de agora você roubará a força vital de criaturas vivas. A única cura para esta maldição é a morte ou água benta. Se quiser manter sua maldição você precisará do Pingente do Drácula; então continuará vampiro até removê-lo ou uma estaca perfurar seu coração. Tenha cuidado para quem você mostra este poder, pois haverá pessoas que vão querer tirá-lo de você. Você é realmente um monstro?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Presença Sombria]§r §cVocê sente a sede de sangue retornando... Talvez desta vez você não a perca...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Presença Sombria]§r §cVocê sente seu poder desaparecendo como se fosse apenas um sonho... Você realmente não conseguiu mantê-lo por mais tempo?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Presença Sombria]§r §cSerá preciso mais do que isso para tirar o seu poder... Mostre o inferno a eles!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Abençoados sejam os amaldiçoados",
+  "advancement.soulless.bless_be_the_damned.description": "Cure um vampiro usando água benta."
 }

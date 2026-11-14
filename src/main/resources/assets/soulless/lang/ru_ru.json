@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Конфигурация Soulless",
   "soulless.configuration.section.soulless.common.toml.title": "Конфигурация Soulless",
   "soulless.configuration.items": "Список предметов",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Святая вода",
+  "entity.soulless.holy_water": "Святая вода",
+  "tooltip.soulless.holy_water.line1": "Разбрызгивает освященную воду по площади.",
+  "tooltip.soulless.holy_water.line2": "Снимает негативные эффекты, очищает от вампиризма и карает нежить.",
+  "message.soulless.purified_vampirism": "Вы очищены от проклятия вампиризма!",
+  "message.soulless.holy_water_repelled": "Святая вода обжигает вашу плоть, но кулон Дракулы защищает вашу бессмертную душу!",
+  "message.soulless.vampire_whisper": "§4[Тёмное Присутствие]§r §cТы начинаешь ощущать жажду крови. Отныне ты будешь вытягивать жизненную силу из живых существ. Единственное исцеление от этого проклятия — смерть или святая вода. Если хочешь сохранить своё проклятие, тебе понадобится кулон Дракулы: ты останешься вампиром, пока не снимешь его или пока кол не пронзит твоё сердце. Будь осторожен с тем, кому являешь эту силу, ведь найдутся те, кто захочет её отнять. Неужели ты действительно чудовище?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Тёмное Присутствие]§r §cТы чувствуешь, как возвращается жажда крови... Может, на этот раз ты её не потеряешь...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Тёмное Присутствие]§r §cТы чувствуешь, как твоя сила угасает, словно это был всего лишь сон... Неужели ты не смог удержать её дольше?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Тёмное Присутствие]§r §cПотребуется нечто большее, чтобы отнять у тебя эту силу... Задай им жару!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Благословение проклятых",
+  "advancement.soulless.bless_be_the_damned.description": "Исцелите вампира с помощью святой воды."
 }

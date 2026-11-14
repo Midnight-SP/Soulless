@@ -114,5 +114,17 @@
   "soulless.configuration.section.soulless.common.toml": "Configuración de Soulless",
   "soulless.configuration.section.soulless.common.toml.title": "Configuración de Soulless",
   "soulless.configuration.items": "Lista de objetos",
-  "soulless.configuration.logDirtBlock": "Log Dirt Block"
+  "soulless.configuration.logDirtBlock": "Log Dirt Block",
+  "item.soulless.holy_water": "Agua bendita",
+  "entity.soulless.holy_water": "Agua bendita",
+  "tooltip.soulless.holy_water.line1": "Salpica agua consagrada en un área.",
+  "tooltip.soulless.holy_water.line2": "Elimina efectos dañinos, purifica el vampirismo y castiga a los no-muertos.",
+  "message.soulless.purified_vampirism": "¡Has sido purificado de la maldición del vampirismo!",
+  "message.soulless.holy_water_repelled": "¡El agua bendita quema tu carne, pero el Colgante de Drácula protege tu alma inmortal!",
+  "message.soulless.vampire_whisper": "§4[Presencia Oscura]§r §cHas comenzado a sentir sed de sangre. A partir de ahora robarás la fuerza vital de las criaturas vivas. La única cura para esta maldición es la muerte o el agua bendita. Si deseas conservar tu maldición necesitarás el Colgante de Drácula; permanecerás como vampiro hasta que te lo quites o una estaca atraviese tu corazón. Ten cuidado con a quién le muestras este poder, pues habrá quienes deseen arrebatártelo. ¿Realmente eres un monstruo?§r",
+  "message.soulless.vampire_whisper_reawakened": "§4[Presencia Oscura]§r §cSientes que la sed de sangre regresa... Quizás esta vez no la pierdas...§r",
+  "message.soulless.vampire_whisper_cured": "§4[Presencia Oscura]§r §cSientes que tu poder se desvanece como si no fuera más que un sueño... ¿De verdad no pudiste conservarlo por más tiempo?§r",
+  "message.soulless.vampire_whisper_pendant_protected": "§4[Presencia Oscura]§r §cHaría falta mucho más que eso para arrebatarte el poder... ¡Hazles arder en el infierno!§r",
+  "advancement.soulless.bless_be_the_damned.title": "Benditos sean los malditos",
+  "advancement.soulless.bless_be_the_damned.description": "Cura a un vampiro usando agua bendita."
 }
